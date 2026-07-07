@@ -1,0 +1,123 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/home/CtaBand.astro';
+import { useDict } from '../../lib/i18n';
+import { graph, orgNode, websiteNode, breadcrumbNode, SITE } from '../../lib/seo';
+
+const d = useDict('es');
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const fmt = new Intl.DateTimeFormat('es-PE', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const jsonLd = graph(
+  orgNode(d),
+  websiteNode(d, 'es'),
+  breadcrumbNode([
+    { name: d.a11y.breadcrumbHome, url: `${SITE}/` },
+    { name: d.blog.title, url: `${SITE}/blog` },
+  ])
+);
+---
+
+<Base lang="es" title={d.meta.blog.title} description={d.meta.blog.description} esPath="/blog" enPath="/blog" jsonLd={jsonLd}>
+  <section class="section">
+    <div class="container">
+      <h1 class="h2 reveal">{d.blog.title}</h1>
+      <p class="lead reveal" style="--reveal-delay:.08s">{d.blog.lead}</p>
+
+      <ul class="posts">
+        {posts.map((post, i) => (
+          <li class="reveal" style={`--reveal-delay:${i * 0.07}s`}>
+            <a href={`/blog/${post.id.replace(/\.md$/, '')}`}>
+              <time class="mono" datetime={post.data.date.toISOString().slice(0, 10)}>
+                {fmt.format(post.data.date)}
+              </time>
+              <h2 class="h3">{post.data.title}</h2>
+              <p>{post.data.description}</p>
+              <span class="mono more">{d.blog.readMore} →</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand lang="es" />
+</Base>
+
+<style>
+  .lead {
+    margin-top: 1.1rem;
+  }
+
+  .posts {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .posts li {
+    border-top: 1px solid var(--line);
+  }
+
+  .posts li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .posts a {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0.4rem 2.5rem;
+    padding-block: 2rem;
+    align-items: start;
+    transition: background-color 0.25s ease;
+  }
+
+  .posts a:hover {
+    background: var(--surface);
+  }
+
+  time {
+    font-size: 0.82rem;
+    color: var(--muted);
+    padding-top: 0.35rem;
+  }
+
+  h2 {
+    grid-column: 2;
+    grid-row: 1;
+    transition: color 0.2s ease;
+  }
+
+  .posts a:hover h2 {
+    color: var(--brand);
+  }
+
+  .posts p {
+    grid-column: 2;
+    color: var(--muted);
+    max-width: 68ch;
+  }
+
+  .more {
+    grid-column: 2;
+    margin-top: 0.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand-text);
+  }
+
+  @media (max-width: 700px) {
+    .posts a {
+      grid-template-columns: 1fr;
+    }
+
+    h2,
+    .posts p,
+    .more {
+      grid-column: 1;
+    }
+  }
+</style>

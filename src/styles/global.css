@@ -1,0 +1,848 @@
+/* ============================================================
+   TRÁNSITO NACIONAL — Design System
+   Concepto: "El Manifiesto de Ruta"
+   Paleta: naranja de marca sobre asfalto cálido.
+   Tipos:   Archivo Black (display) · Archivo (texto) · IBM Plex Mono (datos)
+   Radios:  botones/inputs 10px · tarjetas 18px · pills 999px (regla fija)
+   ============================================================ */
+
+/* ---------- Tokens ---------- */
+:root {
+  /* Marca */
+  --brand: #ee7a18;
+  --brand-strong: #d5670b;
+  --brand-deep: #a34e05;
+  --brand-ink: #1d130a;          /* texto sobre naranja */
+  --brand-text: #a4500a;         /* naranja legible como texto (AA sobre --bg y --surface-2) */
+  --brand-soft: rgba(238, 122, 24, 0.12);
+
+  /* Tema claro (por defecto, también sin JS) */
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --surface-2: #efede7;
+  --text: #1b1713;
+  --muted: #625b52;
+  --line: #e3dfd7;
+  --line-strong: #cfc9bf;
+  --scrim: linear-gradient(180deg, rgba(20, 14, 8, 0.55) 0%, rgba(20, 14, 8, 0.25) 45%, rgba(20, 14, 8, 0.62) 100%);
+  --shadow-card: 0 18px 48px -20px rgba(41, 30, 18, 0.28);
+  --header-bg: rgba(247, 246, 243, 0.82);
+
+  /* Métricas */
+  --r-control: 10px;
+  --r-card: 18px;
+  --container: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --section: clamp(4.5rem, 9vw, 7.5rem);
+
+  /* Tipos */
+  --font-display: 'Archivo Black', 'Archivo Variable', sans-serif;
+  --font-body: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0f0d0b;
+  --surface: #171310;
+  --surface-2: #1e1914;
+  --text: #f4f0ea;
+  --muted: #a89e92;
+  --line: #2b241d;
+  --line-strong: #3d342a;
+  --brand: #f98a26;
+  --brand-strong: #ee7a18;
+  --brand-text: #ffa14f;
+  --brand-soft: rgba(249, 138, 38, 0.14);
+  --scrim: linear-gradient(180deg, rgba(8, 6, 4, 0.62) 0%, rgba(8, 6, 4, 0.34) 45%, rgba(8, 6, 4, 0.78) 100%);
+  --shadow-card: 0 22px 56px -22px rgba(0, 0, 0, 0.65);
+  --header-bg: rgba(15, 13, 11, 0.78);
+
+  color-scheme: dark;
+}
+
+/* ---------- Reset breve ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+::selection {
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Tipografía ---------- */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400; /* Archivo Black solo trae 400 */
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  line-height: 0.94;
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.98;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+}
+
+/* Display en trazo: tipografía como material gráfico */
+.display-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--line-strong);
+}
+
+.h3 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brand-text);
+}
+
+.lead {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 62ch;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section);
+}
+
+/* ---------- Botones (radios fijos: 10px) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.7rem;
+  border-radius: var(--r-control);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+  white-space: nowrap;
+  transition: transform 0.18s var(--ease-out), background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.btn-primary {
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+
+.btn-primary:hover {
+  background: var(--brand-strong);
+}
+
+.btn-ghost {
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+/* Variante sobre foto/video (hero): garantiza contraste AA */
+.btn-ghost.on-media {
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #fff;
+  background: rgba(12, 9, 6, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.btn-ghost.on-media:hover {
+  border-color: #fff;
+  color: #fff;
+  background: rgba(12, 9, 6, 0.45);
+}
+
+/* ---------- Firma visual: la línea de ruta ---------- */
+.route-line {
+  stroke: var(--brand);
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 8 10;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .route-draw {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    transition: stroke-dashoffset 2.4s var(--ease-out);
+  }
+
+  .in-view .route-draw,
+  .route-draw.in-view {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---------- Reveal on scroll (coreografía variada) ---------- */
+.reveal,
+.reveal-line,
+.reveal-wipe {
+  opacity: 1;
+  transform: none;
+}
+
+/* Solo se ocultan si hay JS (html.js): sin JS la página es 100% visible */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+
+  html.js .reveal.in-view {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Titulares: se asientan desde el desenfoque, como un rótulo que enfoca */
+  html.js .reveal-line {
+    opacity: 0;
+    transform: translateY(0.45em);
+    filter: blur(10px);
+    transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out), filter 0.85s var(--ease-out);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+
+  html.js .reveal-line.in-view {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+
+  /* Imágenes y celdas: enfocan y aterrizan con una leve escala */
+  html.js .reveal-wipe {
+    opacity: 0;
+    transform: scale(1.035) translateY(14px);
+    filter: blur(14px);
+    transition: opacity 0.95s var(--ease-out), transform 0.95s var(--ease-out), filter 0.95s var(--ease-out);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+
+  html.js .reveal-wipe.in-view {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+/* ---------- Marquee (una sola vez en la página: cobertura) ---------- */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-track {
+  display: inline-flex;
+  gap: 3.5rem;
+  padding-right: 3.5rem;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track {
+    animation: marquee 36s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Tarjetas de imagen: armonía con el fondo ---------- */
+.media-card {
+  position: relative;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.media-card > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-out);
+}
+
+.media-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(200deg, rgba(20, 13, 6, 0) 40%, rgba(20, 13, 6, 0.55) 100%);
+  pointer-events: none;
+}
+
+a:hover > .media-card > img,
+.media-card:hover > img {
+  transform: scale(1.04);
+}
+
+/* ---------- Accesibilidad ---------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--brand);
+  color: var(--brand-ink);
+  padding: 0.8rem 1.2rem;
+  border-radius: 0 0 var(--r-control) 0;
+  font-weight: 700;
+}
+
+.skip-link:focus-visible {
+  left: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Lenis (scroll con inercia) ---------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* ---------- Borde de montaña: los Andes cortando entre secciones ---------- */
+.peaks-top {
+  position: relative;
+}
+
+.peaks-top::before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 0;
+  right: 0;
+  height: clamp(46px, 8vw, 120px);
+  transform: translateY(-100%);
+  background: inherit;
+  clip-path: polygon(
+    0% 100%, 8% 42%, 16% 78%, 24% 18%, 33% 62%, 41% 8%, 50% 55%,
+    58% 20%, 67% 72%, 75% 30%, 84% 64%, 92% 12%, 100% 48%, 100% 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ---------- Faro que sigue al cursor (solo en el acto nocturno) ---------- */
+.act-night {
+  --mx: 50%;
+  --my: 30%;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .act-night::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      520px circle at var(--mx) var(--my),
+      rgba(238, 122, 24, 0.14),
+      transparent 46%
+    );
+    mix-blend-mode: screen;
+    z-index: 1;
+  }
+}
+
+/* ---------- Destello del botón (barrido de luz al pasar el cursor) ---------- */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -110%;
+  width: 90%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-18deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn-shine:hover::after {
+    animation: btn-shine-sweep 0.7s var(--ease-out);
+  }
+}
+
+@keyframes btn-shine-sweep {
+  to {
+    left: 130%;
+  }
+}
+
+/* ---------- Border beam: un haz de luz orbitando el CTA final ---------- */
+.beam-wrap {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  border: 1.5px solid transparent;
+  -webkit-mask:
+    linear-gradient(#000, #000) padding-box,
+    linear-gradient(#000, #000) border-box;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.beam {
+  position: absolute;
+  width: 90px;
+  aspect-ratio: 1;
+  background: linear-gradient(to left, rgba(29, 19, 10, 0.9), rgba(29, 19, 10, 0.35), transparent);
+  offset-path: rect(0 auto auto 0 round 90px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .beam {
+    animation: beam-orbit 7s linear infinite;
+  }
+}
+
+@keyframes beam-orbit {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+/* ---------- Tipografía cinética: letras del hero (split por JS) ---------- */
+.char {
+  display: inline-block;
+  white-space: pre;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.js .splitting .char {
+    opacity: 0;
+    transform: translateY(0.65em) rotate(4deg);
+    animation: char-in 0.75s var(--ease-out) forwards;
+    animation-delay: calc(0.25s + var(--ci) * 0.028s);
+  }
+}
+
+@keyframes char-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Preloader: el sello de ruta (una vez por sesión) ---------- */
+#preloader {
+  display: none;
+}
+
+html.js #preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f0d0b;
+  transition: opacity 0.55s ease, visibility 0.55s ease;
+}
+
+#preloader.done {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.pre-frame {
+  position: relative;
+  width: min(300px, 70vw);
+  aspect-ratio: 1.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pre-corner {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #f98a26;
+  line-height: 1;
+}
+
+.pre-corner.tl { top: 0; left: 0; }
+.pre-corner.tr { top: 0; right: 0; }
+.pre-corner.br { bottom: 0; right: 0; }
+.pre-corner.bl { bottom: 0; left: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .pre-corner.tl { animation: corner-tl 0.55s var(--ease-out) both; }
+  .pre-corner.tr { animation: corner-tr 0.55s 0.07s var(--ease-out) both; }
+  .pre-corner.br { animation: corner-br 0.55s 0.14s var(--ease-out) both; }
+  .pre-corner.bl { animation: corner-bl 0.55s 0.21s var(--ease-out) both; }
+}
+
+@keyframes corner-tl { from { transform: translate(90px, 60px); opacity: 0; } }
+@keyframes corner-tr { from { transform: translate(-90px, 60px); opacity: 0; } }
+@keyframes corner-br { from { transform: translate(-90px, -60px); opacity: 0; } }
+@keyframes corner-bl { from { transform: translate(90px, -60px); opacity: 0; } }
+
+.pre-word {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  color: #f4f0ea;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+}
+
+.pre-word span {
+  color: #f98a26;
+}
+
+.pre-route {
+  width: 150px;
+}
+
+.pre-route path {
+  stroke: #f98a26;
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 0.32 0.68;
+  stroke-dashoffset: 0.32;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pre-route path {
+    animation: route-scan 1.3s ease-in-out infinite;
+  }
+}
+
+@keyframes route-scan {
+  to {
+    stroke-dashoffset: -0.68;
+  }
+}
+
+/* ---------- View Transition: barrido circular desde el HUD ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-group(root) {
+    animation-duration: 0.65s;
+  }
+
+  ::view-transition-new(root) {
+    animation: vt-circle-in 0.65s var(--ease-out) both;
+  }
+
+  ::view-transition-old(root) {
+    animation: none;
+    opacity: 1;
+    z-index: -1;
+  }
+}
+
+@keyframes vt-circle-in {
+  from {
+    clip-path: circle(0% at 3% 92%);
+  }
+  to {
+    clip-path: circle(150% at 3% 92%);
+  }
+}
+
+/* ---------- Grano fílmico global (fijo, no repinta al hacer scroll) ---------- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+:root[data-theme='dark'] body::after {
+  opacity: 0.07;
+}
+
+/* ---------- Scrollbar de marca ---------- */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand-deep) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-deep);
+  border-radius: 99px;
+  border: 3px solid var(--bg);
+}
+
+/* ---------- HUD de ruta: la página es el viaje Lima → Bogotá ---------- */
+@property --km {
+  syntax: '<integer>';
+  inherits: true;
+  initial-value: 0;
+}
+
+.route-hud {
+  position: fixed;
+  left: clamp(0.7rem, 1.6vw, 1.6rem);
+  top: 0;
+  bottom: 0;
+  z-index: 55;
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.route-spine {
+  position: absolute;
+  left: 5px;
+  top: 90px;
+  bottom: 90px;
+  width: 2px;
+  background: repeating-linear-gradient(180deg, var(--line-strong) 0 6px, transparent 6px 14px);
+  opacity: 0.7;
+}
+
+.route-spine-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--brand);
+  transform-origin: top;
+  transform: scaleY(0);
+}
+
+.hud-readout {
+  position: relative;
+  margin-bottom: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+}
+
+.hud-waypoint {
+  color: var(--brand-text);
+  font-weight: 500;
+  transition: opacity 0.4s ease;
+}
+
+.hud-waypoint.swap {
+  opacity: 0;
+}
+
+.hud-km::before {
+  content: 'KM ';
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .route-spine-fill {
+      animation: spine-fill linear both;
+      animation-timeline: scroll(root);
+    }
+
+    .hud-km {
+      animation: odometer linear both;
+      animation-timeline: scroll(root);
+      counter-reset: km var(--km);
+    }
+
+    .hud-km::after {
+      content: counter(km);
+    }
+  }
+}
+
+@supports not (animation-timeline: scroll()) {
+  .hud-km {
+    display: none;
+  }
+
+  .route-spine-fill {
+    transform: scaleY(1);
+    opacity: 0.35;
+  }
+}
+
+@keyframes spine-fill {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes odometer {
+  to {
+    --km: 3190;
+  }
+}
+
+@media (max-width: 1180px) {
+  .route-hud {
+    display: none;
+  }
+}
+
+/* ---------- Acto nocturno: tokens locales (viaje de noche a mitad de página) ---------- */
+.act-night {
+  --bg: #0c0a08;
+  --surface: #14110d;
+  --surface-2: #1b1712;
+  --text: #f4f0ea;
+  --muted: #a89e92;
+  --line: #292219;
+  --line-strong: #3d342a;
+  --brand-text: #ffa14f;
+  background: var(--bg);
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

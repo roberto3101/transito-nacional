@@ -1,0 +1,254 @@
+---
+/**
+ * Acto nocturno: a mitad de la página "anochece" (tokens locales oscuros
+ * en ambos temas, un único cambio de bloque deliberado). El panel izquierdo
+ * queda fijo con el numeral gigante de la etapa activa mientras las cinco
+ * etapas del viaje pasan a la derecha, conectadas por la línea de ruta.
+ */
+import { useDict, type Lang } from '../../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = useDict(lang);
+---
+
+<section class="section process act-night peaks-top" id="proceso">
+  <div class="container process-grid">
+    <header class="process-head">
+      <h2 class="h2 reveal-line">{d.process.title}</h2>
+      <p class="lead reveal" style="--reveal-delay:.1s">{d.process.lead}</p>
+
+      <div class="head-step" aria-hidden="true">
+        <span class="head-n display" id="process-n">1</span>
+        <span class="head-title mono" id="process-title">{d.process.steps[0].title}</span>
+      </div>
+    </header>
+
+    <ol class="steps" data-observe>
+      <svg class="rail" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true">
+        <path class="route-line route-draw" d="M1 0 V100" pathLength="1200" />
+      </svg>
+
+      {d.process.steps.map((s, i) => (
+        <li class="step reveal" style={`--reveal-delay:${(i % 2) * 0.08}s`} data-step={s.n} data-title={s.title}>
+          <span class="step-n mono" aria-hidden="true">{s.n}</span>
+          <span class="step-ghost display" aria-hidden="true">{s.n}</span>
+          <div class="step-body">
+            <h3 class="h3">{s.title}</h3>
+            <p>{s.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .process {
+    position: relative;
+    overflow: hidden;
+    border-block: 1px solid var(--line);
+    /* Marcas viales difuminadas cruzando la noche */
+    background-image: repeating-linear-gradient(
+      115deg,
+      transparent 0 220px,
+      rgba(238, 122, 24, 0.05) 220px 224px,
+      transparent 224px 460px
+    );
+  }
+
+  /* Bruma naranja: los faros en la noche, delante y detrás */
+  .process::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(52% 42% at 82% 8%, rgba(238, 122, 24, 0.12), transparent 65%),
+      radial-gradient(70% 46% at 30% 106%, rgba(238, 122, 24, 0.17), transparent 62%);
+    pointer-events: none;
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: clamp(2.5rem, 6vw, 5.5rem);
+    align-items: start;
+    position: relative;
+  }
+
+  .process-head {
+    position: sticky;
+    top: 100px;
+  }
+
+  .process-head .lead {
+    margin-top: 1.1rem;
+  }
+
+  .head-step {
+    margin-top: 3rem;
+    position: relative;
+    min-height: 11rem;
+  }
+
+  .head-n {
+    font-size: clamp(7rem, 12vw, 11rem);
+    line-height: 0.8;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--brand);
+    display: block;
+    transition: opacity 0.35s ease, transform 0.35s var(--ease-out);
+  }
+
+  .head-n.swap {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  .head-title {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--brand-text);
+    transition: opacity 0.35s ease;
+  }
+
+  .head-title.swap {
+    opacity: 0;
+  }
+
+  .steps {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.2rem, 4.5vh, 3.5rem);
+    padding-left: 3.4rem;
+  }
+
+  .rail {
+    position: absolute;
+    left: 1.35rem;
+    top: 0.5rem;
+    height: calc(100% - 1rem);
+    width: 2px;
+    overflow: visible;
+  }
+
+  .step {
+    position: relative;
+    display: flex;
+    gap: 1.4rem;
+    align-items: flex-start;
+    min-height: min(20vh, 200px);
+    padding: 1.4rem 1.5rem 1.4rem 0;
+    border-radius: var(--r-card);
+    transition: background-color 0.35s ease;
+  }
+
+  .step:hover {
+    background: rgba(238, 122, 24, 0.05);
+  }
+
+  .step-n {
+    position: absolute;
+    left: -3.4rem;
+    top: 0;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--r-control);
+    background: var(--bg);
+    border: 1.5px solid var(--brand);
+    color: var(--brand-text);
+    font-weight: 500;
+    font-size: 1rem;
+    z-index: 1;
+  }
+
+  /* Numeral fantasma detrás de cada etapa: hitos en la oscuridad */
+  .step-ghost {
+    position: absolute;
+    right: 0.5rem;
+    top: -0.9rem;
+    font-size: clamp(4.5rem, 8vw, 7rem);
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--line-strong);
+    opacity: 0.85;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .step-body {
+    max-width: 52ch;
+  }
+
+  .step-body p {
+    margin-top: 0.6rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 900px) {
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-head {
+      position: static;
+    }
+
+    .head-step {
+      display: none;
+    }
+
+    .step {
+      min-height: 0;
+    }
+
+    .step-ghost {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import { onReady } from '../../lib/ready';
+
+  // El numeral gigante del panel fijo sigue a la etapa visible.
+  const initProcess = () => {
+    const n = document.getElementById('process-n');
+    const title = document.getElementById('process-title');
+    const steps = document.querySelectorAll<HTMLElement>('.process .step');
+    if (!n || !title || !steps.length || n.dataset.bound) return;
+    n.dataset.bound = '1';
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            const el = e.target as HTMLElement;
+            if (n.textContent !== el.dataset.step) {
+              n.classList.add('swap');
+              title.classList.add('swap');
+              setTimeout(() => {
+                n.textContent = el.dataset.step ?? '';
+                title.textContent = el.dataset.title ?? '';
+                n.classList.remove('swap');
+                title.classList.remove('swap');
+              }, 200);
+            }
+          }
+        }
+      },
+      { rootMargin: '-45% 0px -45% 0px' }
+    );
+    steps.forEach((s) => io.observe(s));
+  };
+
+  onReady(initProcess);
+</script>

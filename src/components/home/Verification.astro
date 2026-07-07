@@ -1,0 +1,99 @@
+---
+import Picture from '../Picture.astro';
+import { useDict, type Lang } from '../../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = useDict(lang);
+const points = [d.verification.point1, d.verification.point2, d.verification.point3];
+---
+
+<section class="section verification peaks-top">
+  <div class="container ver-grid">
+    <div class="ver-copy">
+      <h2 class="h2 reveal-line">{d.verification.title}</h2>
+      <p class="reveal" style="--reveal-delay:.08s">{d.verification.text}</p>
+      <ul>
+        {points.map((pt, i) => (
+          <li class="reveal" style={`--reveal-delay:${0.14 + i * 0.07}s`}>
+            <!-- check: Phosphor Icons (MIT) -->
+            <svg viewBox="0 0 256 256" width="20" height="20" fill="var(--brand)" aria-hidden="true"><path d="m229.66 77.66-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69 218.34 66.34a8 8 0 0 1 11.32 11.32Z"/></svg>
+            <span>{pt}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <figure class="media-card ver-media reveal-wipe" style="--reveal-delay:.14s">
+      <Picture
+        name="svc-verificacion"
+        alt={lang === 'es' ? 'Verificación de la carga en el punto de origen antes del viaje' : 'Cargo verification at the origin point before the trip'}
+        sizes="(max-width: 900px) 100vw, 46vw"
+      />
+    </figure>
+  </div>
+</section>
+
+<style>
+  .verification {
+    /* Necesario para que el borde de montaña herede este fondo */
+    background: var(--bg);
+  }
+
+  .ver-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
+  }
+
+  .ver-copy h2 {
+    max-width: 14ch;
+  }
+
+  .ver-copy > p {
+    margin-top: 1.4rem;
+    color: var(--muted);
+    max-width: 56ch;
+  }
+
+  ul {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.95rem;
+  }
+
+  li {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    font-weight: 600;
+  }
+
+  li svg {
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+  }
+
+  .ver-media {
+    aspect-ratio: 7 / 6;
+    box-shadow: var(--shadow-card);
+  }
+
+  .ver-media :global(img) {
+    height: 100%;
+  }
+
+  @media (max-width: 900px) {
+    .ver-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ver-media {
+      aspect-ratio: 16 / 10;
+    }
+  }
+</style>

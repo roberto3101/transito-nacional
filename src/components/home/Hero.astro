@@ -1,0 +1,195 @@
+---
+import { useDict, whatsappHref, p, type Lang } from '../../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = useDict(lang);
+const servicesPath = p(lang, lang === 'es' ? '/servicios' : '/services');
+---
+
+<section class="hero">
+  <video
+    class="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="/media/img/hero-andes-1920.jpg"
+    aria-label={d.hero.videoLabel}
+  >
+    <source src="/media/video/hero-1080.webm" type="video/webm" />
+    <source src="/media/video/hero-1080.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-scrim" aria-hidden="true"></div>
+
+  <div class="container hero-content">
+    <p class="eyebrow hero-eyebrow reveal-line">{d.hero.eyebrow}</p>
+    <h1>
+      <span class="display hero-display" data-split>{d.hero.display}</span>
+      <span class="hero-lead reveal-line" style="--reveal-delay:.55s">{d.hero.lead}</span>
+    </h1>
+    <div class="hero-ctas reveal" style="--reveal-delay:.75s">
+      <a href={whatsappHref(lang)} class="btn btn-primary btn-shine" target="_blank" rel="noopener">{d.hero.ctaPrimary}</a>
+      <a href={servicesPath} class="btn btn-ghost on-media">{d.hero.ctaSecondary}</a>
+    </div>
+  </div>
+
+  <!-- Firma: la línea de ruta arranca aquí y se dibuja hacia la primera sección -->
+  <svg class="hero-route" viewBox="0 0 320 120" fill="none" aria-hidden="true" data-observe>
+    <path class="route-line route-draw" d="M4 8 C 90 24, 130 78, 200 92 S 300 104, 316 116" />
+    <circle cx="4" cy="8" r="4" fill="var(--brand)" />
+  </svg>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 88svh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: #14100c; /* asfalto mientras carga el poster */
+  }
+
+  @supports not (height: 88svh) {
+    .hero {
+      min-height: 88vh;
+    }
+  }
+
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Entrada Ken Burns + parallax de salida (scroll-driven, solo GPU) */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-video {
+      animation: hero-kenburns 2.6s var(--ease-out) both;
+    }
+
+    @supports (animation-timeline: view()) {
+      .hero {
+        view-timeline: --hero block;
+      }
+
+      .hero-video {
+        animation:
+          hero-kenburns 2.6s var(--ease-out) both,
+          hero-parallax linear both;
+        animation-timeline: auto, --hero;
+        animation-range: normal, exit 0% exit 100%;
+      }
+    }
+  }
+
+  @keyframes hero-kenburns {
+    from {
+      transform: scale(1.08);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes hero-parallax {
+    to {
+      transform: translateY(14%) scale(1.04);
+    }
+  }
+
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    background: var(--scrim);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+    max-width: var(--container);
+  }
+
+  .hero-eyebrow {
+    color: #ffb673;
+  }
+
+  h1 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    margin-top: 1rem;
+  }
+
+  .hero-display {
+    font-size: clamp(2.7rem, 7.2vw, 5.9rem);
+    color: #fff;
+    max-width: 12ch;
+    text-wrap: balance;
+  }
+
+  .hero-lead {
+    font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.88);
+    max-width: 46ch;
+    font-weight: 500;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2.2rem;
+  }
+
+  .hero-route {
+    position: absolute;
+    right: clamp(0.5rem, 4vw, 4rem);
+    bottom: 0;
+    width: clamp(160px, 24vw, 320px);
+    z-index: 1;
+    opacity: 0.9;
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      min-height: 92svh;
+    }
+
+    .hero-route {
+      display: none;
+    }
+
+    .hero-ctas .btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  import { onReady } from '../../lib/ready';
+
+  // Ahorro de datos y movimiento reducido: congela el video y deja el poster.
+  // En el resto de casos, asegura la reproducción aunque el navegador
+  // haya postergado el autoplay (pestaña en segundo plano, View Transitions...).
+  onReady(() => {
+    const v = document.querySelector<HTMLVideoElement>('.hero-video');
+    if (!v) return;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const saveData = (navigator as any).connection?.saveData === true;
+    if (reduced || saveData) {
+      v.removeAttribute('autoplay');
+      v.pause();
+    } else {
+      v.play().catch(() => {});
+    }
+  });
+</script>

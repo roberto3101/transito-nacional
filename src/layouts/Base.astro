@@ -1,0 +1,298 @@
+---
+import '@fontsource/archivo-black';
+import '@fontsource-variable/archivo';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '../styles/global.css';
+
+import { ClientRouter } from 'astro:transitions';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFab from '../components/WhatsAppFab.astro';
+import RouteHUD from '../components/RouteHUD.astro';
+import { useDict, type Lang } from '../lib/i18n';
+import { SITE } from '../lib/seo';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  /** ruta de esta página en cada idioma, para canonical + hreflang */
+  esPath: string;
+  enPath: string;
+  /** JSON-LD ya serializado (usar graph(...) de lib/seo) */
+  jsonLd?: string;
+  ogImage?: string;
+  /** imagen crítica a precargar (LCP), ej. poster del hero */
+  preloadImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  lang,
+  title,
+  description,
+  esPath,
+  enPath,
+  jsonLd,
+  ogImage = '/media/og/og-home.jpg',
+  preloadImage,
+  noindex = false,
+} = Astro.props;
+
+const d = useDict(lang);
+const path = lang === 'es' ? esPath : enPath;
+const canonical = `${SITE}${path === '/' ? '' : path}`;
+const esUrl = `${SITE}${esPath === '/' ? '' : esPath}`;
+const enUrl = `${SITE}${enPath}`;
+/* Páginas solo en español (ej. blog): enPath === esPath desactiva el hreflang EN */
+const hasEn = enPath !== esPath;
+const altHref = lang === 'es' ? (hasEn ? enPath : '/en') : esPath || '/';
+---
+
+<!doctype html>
+<html lang={d.htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="es-PE" href={esUrl} />
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    {hasEn && <link rel="alternate" hreflang="en" href={enUrl} />}
+    <link rel="alternate" hreflang="x-default" href={esUrl} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/media/brand/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/media/brand/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f6f3" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f0d0b" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={d.brand.name} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_PE' : 'en_US'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${SITE}${ogImage}`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${SITE}${ogImage}`} />
+
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
+
+    <!-- Tema antes del primer paint (evita flash) y tras cada navegación suave -->
+    <script is:inline>
+      (function () {
+        function applyTheme() {
+          document.documentElement.classList.add('js');
+          var t;
+          try {
+            t = localStorage.getItem('tn-theme');
+          } catch (e) {}
+          if (t !== 'dark' && t !== 'light') {
+            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.dataset.theme = t;
+        }
+        applyTheme();
+        document.addEventListener('astro:after-swap', applyTheme);
+      })();
+    </script>
+
+    <ClientRouter />
+    {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
+  </head>
+
+  <body>
+    <!-- Sello de ruta: preloader de marca, una sola vez por sesión -->
+    <div id="preloader" aria-hidden="true">
+      <div class="pre-frame">
+        <span class="pre-corner tl">+</span>
+        <span class="pre-corner tr">+</span>
+        <span class="pre-corner br">+</span>
+        <span class="pre-corner bl">+</span>
+        <p class="pre-word">Tránsito <span>Nacional</span></p>
+        <svg class="pre-route" viewBox="0 0 150 24" aria-hidden="true">
+          <path d="M2 20 C 40 18, 60 6, 90 8 S 135 14, 148 4" pathLength="1" />
+        </svg>
+      </div>
+    </div>
+
+    <a href="#main" class="skip-link">{d.a11y.skipToContent}</a>
+    <Header lang={lang} altHref={altHref} />
+    <RouteHUD routeLabel="Lima → Bogotá" />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <Footer lang={lang} />
+    <WhatsAppFab lang={lang} />
+
+    <script>
+      import Lenis from 'lenis';
+      import { onReady } from '../lib/ready';
+
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---- Scroll con inercia (la base de la sensación "cara") ---- */
+      if (!reduced && !(window as any).__lenis) {
+        const lenis = new Lenis({ lerp: 0.12, wheelMultiplier: 1.02 });
+        (window as any).__lenis = lenis;
+        const raf = (t: number) => {
+          lenis.raf(t);
+          requestAnimationFrame(raf);
+        };
+        requestAnimationFrame(raf);
+      }
+
+      /* ---- Preloader: sello de ruta, solo la primera vista de la sesión ---- */
+      const pre = document.getElementById('preloader');
+      if (pre) {
+        let seen = false;
+        try {
+          seen = sessionStorage.getItem('tn-seen') === '1';
+        } catch {}
+        if (seen || reduced) {
+          pre.remove();
+        } else {
+          try {
+            sessionStorage.setItem('tn-seen', '1');
+          } catch {}
+          setTimeout(() => pre.classList.add('done'), 1250);
+          setTimeout(() => pre.remove(), 2000);
+        }
+      }
+
+      // En navegaciones cliente (View Transitions) el DOM intercambiado trae de
+      // vuelta el preloader: lo eliminamos al instante (ya se mostró en la 1ª vista).
+      document.addEventListener('astro:after-swap', () => {
+        document.getElementById('preloader')?.remove();
+      });
+
+      onReady(() => {
+        /* ---- Reveals ---- */
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('in-view');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.18, rootMargin: '0px 0px -40px 0px' }
+        );
+        document
+          .querySelectorAll<HTMLElement>('.reveal, .reveal-line, .reveal-wipe, [data-observe]')
+          .forEach((el) => {
+            if (el.dataset.revealBound) return;
+            el.dataset.revealBound = '1';
+            io.observe(el);
+          });
+
+        /* ---- Tipografía cinética: divide el titular en letras ---- */
+        document.querySelectorAll<HTMLElement>('[data-split]:not(.splitting)').forEach((el) => {
+          const text = el.textContent ?? '';
+          el.setAttribute('aria-label', text);
+          el.textContent = '';
+          let i = 0;
+          for (const word of text.split(' ')) {
+            const w = document.createElement('span');
+            w.style.whiteSpace = 'nowrap';
+            w.setAttribute('aria-hidden', 'true');
+            for (const ch of word) {
+              const c = document.createElement('span');
+              c.className = 'char';
+              c.style.setProperty('--ci', String(i++));
+              c.textContent = ch;
+              w.appendChild(c);
+            }
+            el.appendChild(w);
+            el.appendChild(document.createTextNode(' '));
+          }
+          el.classList.add('splitting');
+        });
+
+        /* ---- Contadores del manifiesto (stats) ---- */
+        const counters = document.querySelectorAll<HTMLElement>('[data-count]:not([data-counted])');
+        if (counters.length) {
+          const cio = new IntersectionObserver(
+            (entries) => {
+              for (const e of entries) {
+                if (!e.isIntersecting) continue;
+                const el = e.target as HTMLElement;
+                cio.unobserve(el);
+                el.dataset.counted = '1';
+                const target = parseInt(el.dataset.count!, 10);
+                const prefix = el.dataset.prefix ?? '';
+                const suffix = el.dataset.suffix ?? '';
+                if (reduced) {
+                  el.textContent = prefix + target + suffix;
+                  continue;
+                }
+                const t0 = performance.now();
+                const dur = 1400;
+                const tick = (t: number) => {
+                  const p = Math.min(1, (t - t0) / dur);
+                  const eased = 1 - Math.pow(1 - p, 4);
+                  el.textContent = prefix + Math.round(target * eased) + suffix;
+                  if (p < 1) requestAnimationFrame(tick);
+                };
+                requestAnimationFrame(tick);
+              }
+            },
+            { threshold: 0.6 }
+          );
+          counters.forEach((c) => cio.observe(c));
+        }
+
+        /* ---- Tilt 3D sutil en las celdas con foto ---- */
+        if (!reduced && matchMedia('(hover: hover)').matches) {
+          document.querySelectorAll<HTMLElement>('[data-tilt]:not([data-tilt-on])').forEach((card) => {
+            card.dataset.tiltOn = '1';
+            let raf = 0;
+            card.addEventListener('pointermove', (ev) => {
+              cancelAnimationFrame(raf);
+              raf = requestAnimationFrame(() => {
+                const r = card.getBoundingClientRect();
+                const px = (ev.clientX - r.left) / r.width - 0.5;
+                const py = (ev.clientY - r.top) / r.height - 0.5;
+                card.style.transform = `perspective(900px) rotateY(${px * 5}deg) rotateX(${py * -5}deg) translateY(-4px)`;
+              });
+            });
+            card.addEventListener('pointerleave', () => {
+              cancelAnimationFrame(raf);
+              card.style.transform = '';
+            });
+          });
+        }
+
+        /* ---- El faro: la luz sigue al cursor dentro del acto nocturno ---- */
+        document.querySelectorAll<HTMLElement>('.act-night:not([data-light])').forEach((night) => {
+          night.dataset.light = '1';
+          let raf = 0;
+          night.addEventListener('pointermove', (ev) => {
+            cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => {
+              const r = night.getBoundingClientRect();
+              night.style.setProperty('--mx', `${((ev.clientX - r.left) / r.width) * 100}%`);
+              night.style.setProperty('--my', `${((ev.clientY - r.top) / r.height) * 100}%`);
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

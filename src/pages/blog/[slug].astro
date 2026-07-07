@@ -1,0 +1,143 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/home/CtaBand.astro';
+import { useDict } from '../../lib/i18n';
+import { graph, orgNode, websiteNode, breadcrumbNode, blogPostingNode, SITE } from '../../lib/seo';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/\.md$/, '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const d = useDict('es');
+const slug = post.id.replace(/\.md$/, '');
+const path = `/blog/${slug}`;
+const fmt = new Intl.DateTimeFormat('es-PE', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const jsonLd = graph(
+  orgNode(d),
+  websiteNode(d, 'es'),
+  blogPostingNode({
+    title: post.data.title,
+    description: post.data.description,
+    url: `${SITE}${path}`,
+    datePublished: post.data.date.toISOString().slice(0, 10),
+  }),
+  breadcrumbNode([
+    { name: d.a11y.breadcrumbHome, url: `${SITE}/` },
+    { name: d.blog.title, url: `${SITE}/blog` },
+    { name: post.data.title, url: `${SITE}${path}` },
+  ])
+);
+---
+
+<Base lang="es" title={`${post.data.title} | ${d.brand.name}`} description={post.data.description} esPath={path} enPath={path} jsonLd={jsonLd}>
+  <article class="section">
+    <div class="container post-wrap">
+      <nav class="crumbs mono" aria-label="breadcrumb">
+        <a href="/blog">← {d.blog.backToBlog}</a>
+      </nav>
+
+      <header>
+        <time class="mono" datetime={post.data.date.toISOString().slice(0, 10)}>
+          {d.blog.publishedOn} {fmt.format(post.data.date)}
+        </time>
+        <h1 class="h2">{post.data.title}</h1>
+        <p class="lead">{post.data.description}</p>
+      </header>
+
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+  <CtaBand lang="es" />
+</Base>
+
+<style>
+  .post-wrap {
+    max-width: 780px;
+  }
+
+  .crumbs {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    display: block;
+  }
+
+  .crumbs a:hover {
+    color: var(--brand);
+  }
+
+  time {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  h1 {
+    margin-top: 0.9rem;
+  }
+
+  .lead {
+    margin-top: 1.1rem;
+  }
+
+  .prose {
+    margin-top: 2.8rem;
+  }
+
+  .prose :global(h2) {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.45rem;
+    line-height: 1.3;
+    margin-top: 2.4rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .prose :global(p) {
+    margin-bottom: 1.15rem;
+    color: var(--text);
+  }
+
+  .prose :global(strong) {
+    font-weight: 700;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    margin: 1.1rem 0 1.3rem;
+    padding-left: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .prose :global(ul) {
+    list-style: disc;
+  }
+
+  .prose :global(ol) {
+    list-style: decimal;
+  }
+
+  .prose :global(li::marker) {
+    color: var(--brand);
+  }
+
+  .prose :global(a) {
+    color: var(--brand);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

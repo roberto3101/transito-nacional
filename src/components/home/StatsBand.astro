@@ -1,0 +1,84 @@
+---
+import { useDict, type Lang } from '../../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = useDict(lang);
+---
+
+<section class="stats peaks-top" aria-label="Indicadores">
+  <ul class="container stats-grid">
+    {d.stats.items.map((s, i) => {
+      // "3" / "100%" / "+20" cuentan desde cero al entrar en vista; "24/7" queda fijo
+      const m = s.value.match(/^([+]?)(\d+)(%?)$/);
+      return (
+        <li class="reveal" style={`--reveal-delay:${i * 0.07}s`}>
+          {m ? (
+            <span class="stat-value mono" data-count={m[2]} data-prefix={m[1]} data-suffix={m[3]}>{s.value}</span>
+          ) : (
+            <span class="stat-value mono">{s.value}</span>
+          )}
+          <span class="stat-label">{s.label}</span>
+        </li>
+      );
+    })}
+  </ul>
+</section>
+
+<style>
+  .stats {
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-block: 2.6rem;
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding-inline: 2rem;
+    border-left: 1px solid var(--line);
+  }
+
+  li:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .stat-value {
+    font-size: clamp(2rem, 3.6vw, 2.9rem);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--brand-text);
+    letter-spacing: -0.03em;
+  }
+
+  .stat-label {
+    font-size: 0.92rem;
+    color: var(--muted);
+    max-width: 22ch;
+  }
+
+  @media (max-width: 860px) {
+    .stats-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem 0;
+    }
+
+    li:nth-child(odd) {
+      border-left: 0;
+      padding-left: 0;
+    }
+
+    li:nth-child(even) {
+      padding-right: 0;
+    }
+  }
+</style>

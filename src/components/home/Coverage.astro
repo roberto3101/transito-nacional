@@ -1,0 +1,435 @@
+---
+import { useDict, type Lang } from '../../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = useDict(lang);
+
+/** Corredor andino. La ruta principal (norte) y el ramal sur comparten la geometría del cometa viajero. */
+const MAIN = 'M60 250 C120 235 140 218 170 210 S240 182 270 170 S330 148 360 140 S430 158 470 170 S545 138 580 120 S670 148 720 160 S820 118 880 100';
+const BRANCH = 'M60 250 C110 285 150 318 200 330 S290 310 330 300';
+
+const HUBS = new Set(['LIMA', 'QUITO', 'BOGOTÁ']);
+const nodes = [
+  { x: 60, y: 250, name: 'LIMA', anchor: 'start', dy: 34 },
+  { x: 170, y: 210, name: 'TRUJILLO', anchor: 'middle', dy: -18 },
+  { x: 270, y: 170, name: 'PIURA', anchor: 'middle', dy: -18 },
+  { x: 360, y: 140, name: 'TUMBES', anchor: 'middle', dy: -18 },
+  { x: 470, y: 170, name: 'GUAYAQUIL', anchor: 'middle', dy: 32 },
+  { x: 580, y: 120, name: 'QUITO', anchor: 'middle', dy: -18 },
+  { x: 720, y: 160, name: 'CALI', anchor: 'middle', dy: 32 },
+  { x: 880, y: 100, name: 'BOGOTÁ', anchor: 'end', dy: -18 },
+  { x: 200, y: 330, name: 'AREQUIPA', anchor: 'middle', dy: 32 },
+  { x: 330, y: 300, name: 'CUSCO', anchor: 'middle', dy: 32 },
+];
+
+const countries = [
+  { label: 'PERÚ', x: 30, sep: null },
+  { label: 'ECUADOR', x: 420, sep: 408 },
+  { label: 'COLOMBIA', x: 662, sep: 650 },
+];
+---
+
+<section class="section coverage">
+  <div class="container">
+    <p class="eyebrow reveal-line">{d.coverage.eyebrow}</p>
+    <h2 class="h2 reveal-line" style="--reveal-delay:.08s">{d.coverage.title}</h2>
+    <p class="lead reveal" style="--reveal-delay:.16s">{d.coverage.text}</p>
+
+    <div class="map-frame reveal" style="--reveal-delay:.18s">
+      <!-- Marco de instrumento de navegación -->
+      <span class="fr tl">+</span><span class="fr tr">+</span>
+      <span class="fr bl">+</span><span class="fr br">+</span>
+      <span class="fr-label mono">CORREDOR ANDINO · DEC. 399</span>
+
+      <div class="diagram-scroll">
+        <svg class="diagram" viewBox="0 0 960 470" role="img" aria-label={d.coverage.mapLabel} data-observe>
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#12100d" />
+              <stop offset="0.7" stop-color="#171310" />
+              <stop offset="1" stop-color="#241609" />
+            </linearGradient>
+            <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#d5670b" />
+              <stop offset="0.5" stop-color="#f98a26" />
+              <stop offset="1" stop-color="#ffb673" />
+            </linearGradient>
+            <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0" stop-color="#f98a26" stop-opacity="0.55" />
+              <stop offset="1" stop-color="#f98a26" stop-opacity="0" />
+            </radialGradient>
+            <filter id="soft"><feGaussianBlur stdDeviation="4" /></filter>
+          </defs>
+
+          <rect x="0" y="0" width="960" height="470" fill="url(#sky)" />
+
+          <!-- Rejilla lat/long tenue -->
+          <g class="grid" aria-hidden="true">
+            {Array.from({ length: 9 }).map((_, i) => (
+              <line x1={i * 120} y1="0" x2={i * 120} y2="470" />
+            ))}
+            {Array.from({ length: 5 }).map((_, i) => (
+              <line x1="0" y1={i * 95} x2="960" y2={i * 95} />
+            ))}
+          </g>
+
+          <!-- Silueta de los Andes en tres capas (profundidad) -->
+          <path class="ridge r3" fill="#1c150d" d="M-20 470 L-20 392 L70 350 L150 384 L250 336 L340 372 L440 330 L540 366 L640 332 L740 360 L840 330 L980 366 L980 470 Z" />
+          <path class="ridge r2" fill="#241809" d="M-20 470 L-20 418 L90 372 L180 410 L280 360 L390 404 L500 356 L610 400 L720 358 L830 398 L980 360 L980 470 Z" />
+          <path class="ridge r1" fill="#2e1c07" d="M-20 470 L-20 440 L120 402 L230 436 L350 396 L470 434 L590 394 L710 432 L830 398 L980 430 L980 470 Z" />
+
+          <!-- Bandas de país -->
+          {countries.map((c) => (
+            <>
+              {c.sep && <line x1={c.sep} y1="24" x2={c.sep} y2="330" class="border-sep" />}
+              <text x={c.x} y="30" class="country-label">{c.label}</text>
+            </>
+          ))}
+
+          <!-- Ruta -->
+          <path d={BRANCH} class="route branch" pathLength="1" fill="none" stroke="url(#routeGrad)" stroke-width="2.5" stroke-linecap="round" />
+          <path d={MAIN} class="route glow-under" pathLength="1" fill="none" stroke="#f98a26" stroke-width="9" stroke-linecap="round" />
+          <path d={MAIN} class="route main" pathLength="1" fill="none" stroke="url(#routeGrad)" stroke-width="3.5" stroke-linecap="round" />
+
+          <!-- Cometa viajero con estela -->
+          <g class="comet" aria-hidden="true">
+            <circle class="c-tail t2" r="3.5" fill="#f98a26" />
+            <circle class="c-tail t1" r="4.5" fill="#f98a26" />
+            <circle class="c-head" r="5.5" fill="#fff" />
+          </g>
+
+          <!-- Nodos -->
+          {nodes.map((n) => {
+            const hub = HUBS.has(n.name);
+            return (
+              <g class:list={['node-g', { hub }]}>
+                {hub && <circle cx={n.x} cy={n.y} r="16" class="halo" fill="url(#glow)" />}
+                <circle cx={n.x} cy={n.y} r={hub ? 12 : 8} class="ring" fill="#100e0b" stroke="#f98a26" stroke-width={hub ? 2.5 : 2} />
+                <circle cx={n.x} cy={n.y} r={hub ? 5 : 3.5} class="core" fill="#f98a26" />
+                <text x={n.x} y={n.y + n.dy} text-anchor={n.anchor} class:list={['city-label', { hubtxt: hub }]}>{n.name}</text>
+              </g>
+            );
+          })}
+
+          <!-- Leyenda -->
+          <g class="legend" transform="translate(30 430)">
+            <line x1="0" y1="0" x2="26" y2="0" class="route main static" stroke="url(#routeGrad)" stroke-width="3" stroke-linecap="round" />
+            <text x="34" y="4" class="legend-txt">{d.coverage.legendInternational}</text>
+            <circle cx="220" cy="0" r="5" class="ring" fill="#100e0b" stroke="#f98a26" stroke-width="2" /><circle cx="220" cy="0" r="2.5" class="core" fill="#f98a26" />
+            <text x="234" y="4" class="legend-txt">{d.coverage.legendNational}</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <ul class="routes mono">
+      {d.coverage.routes.map((r) => (
+        <li class="reveal">
+          <span class="route-code">{r.code}</span>
+          <span>{r.route}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      {[0, 1].map(() => (
+        <span class="marquee-set">
+          {d.coverage.cities.map((c) => (
+            <span class="city">{c} <span class="arrow">→</span></span>
+          ))}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .coverage {
+    overflow: hidden;
+  }
+
+  .h2 {
+    margin-top: 0.9rem;
+  }
+
+  .lead {
+    margin-top: 1.1rem;
+  }
+
+  /* Marco tipo instrumento de navegación */
+  .map-frame {
+    position: relative;
+    margin-top: 3rem;
+    padding: 1.2rem;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-card);
+    background: #100e0b;
+  }
+
+  .fr {
+    position: absolute;
+    color: var(--brand);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1;
+    opacity: 0.8;
+  }
+
+  .fr.tl { top: 6px; left: 8px; }
+  .fr.tr { top: 6px; right: 8px; }
+  .fr.bl { bottom: 6px; left: 8px; }
+  .fr.br { bottom: 6px; right: 8px; }
+
+  .fr-label {
+    position: absolute;
+    top: -0.62rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg);
+    padding: 0 0.7rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.28em;
+    color: var(--muted);
+  }
+
+  .diagram-scroll {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    border-radius: calc(var(--r-card) - 6px);
+  }
+
+  .diagram {
+    display: block;
+    min-width: 900px;
+    width: 100%;
+    height: auto;
+  }
+
+  .grid line {
+    stroke: #ffffff;
+    stroke-width: 0.5;
+    opacity: 0.035;
+  }
+
+  .ridge { stroke: none; }
+  .ridge.r3 { fill: #1c150d; }
+  .ridge.r2 { fill: #241809; }
+  .ridge.r1 { fill: #2e1c07; }
+
+  .country-label {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.32em;
+    fill: var(--muted);
+  }
+
+  .border-sep {
+    stroke: var(--line-strong);
+    stroke-dasharray: 2 8;
+    stroke-width: 1.5;
+    opacity: 0.7;
+  }
+
+  /* Ruta con degradado + glow */
+  .route {
+    fill: none;
+    stroke-linecap: round;
+  }
+
+  .route.main {
+    stroke: url(#routeGrad);
+    stroke-width: 3.5;
+    filter: drop-shadow(0 0 6px rgba(249, 138, 38, 0.6));
+  }
+
+  .route.glow-under {
+    stroke: #f98a26;
+    stroke-width: 9;
+    opacity: 0.18;
+    filter: url(#soft);
+  }
+
+  .route.branch {
+    stroke: url(#routeGrad);
+    stroke-width: 2.5;
+    opacity: 0.55;
+    stroke-dasharray: 5 6;
+  }
+
+  .route.static {
+    stroke-width: 3;
+    filter: none;
+  }
+
+  /* Trazo animado al entrar en vista */
+  @media (prefers-reduced-motion: no-preference) {
+    .diagram .route.main,
+    .diagram .route.branch,
+    .diagram .route.glow-under {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+    .diagram .route.branch { stroke-dasharray: 0.02 0.02; }
+
+    [data-observe].in-view .route.main,
+    [data-observe].in-view .route.glow-under {
+      animation: draw 2.4s var(--ease-out) forwards;
+    }
+    [data-observe].in-view .route.branch {
+      animation: draw 1.8s 0.4s var(--ease-out) forwards;
+    }
+    .legend .route.static { animation: none; stroke-dashoffset: 0; }
+  }
+
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* Nodos: anillo + núcleo, hubs con halo y latido */
+  .ring {
+    fill: #100e0b;
+    stroke: var(--brand);
+    stroke-width: 2;
+  }
+
+  .core {
+    fill: var(--brand);
+  }
+
+  .node-g.hub .ring {
+    stroke-width: 2.5;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .node-g .ring {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: ring-pulse 3.4s ease-in-out infinite;
+    }
+    .node-g:nth-of-type(odd) .ring { animation-delay: 1.2s; }
+    .node-g:nth-of-type(3n) .ring { animation-delay: 2.3s; }
+    .node-g.hub .halo {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: halo-pulse 3.4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes ring-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.18); opacity: 0.75; }
+  }
+
+  @keyframes halo-pulse {
+    0%, 100% { transform: scale(0.9); opacity: 0.5; }
+    50% { transform: scale(1.35); opacity: 0.9; }
+  }
+
+  .city-label {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    fill: var(--text);
+    letter-spacing: 0.06em;
+  }
+
+  .city-label.hubtxt {
+    font-size: 15px;
+    fill: #fff;
+    letter-spacing: 0.1em;
+  }
+
+  /* Cometa viajero */
+  .c-head { fill: #fff; filter: drop-shadow(0 0 6px #f98a26); }
+  .c-tail { fill: #f98a26; }
+  .c-head, .c-tail {
+    offset-path: path('M60 250 C120 235 140 218 170 210 S240 182 270 170 S330 148 360 140 S430 158 470 170 S545 138 580 120 S670 148 720 160 S820 118 880 100');
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .c-head, .c-tail { animation: travel 14s linear infinite; }
+    .t1 { animation-delay: -0.18s; opacity: 0.5; }
+    .t2 { animation-delay: -0.36s; opacity: 0.25; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .comet { display: none; }
+  }
+
+  @keyframes travel {
+    to { offset-distance: 100%; }
+  }
+
+  .legend-txt {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    fill: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .routes {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .routes li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--r-control);
+    font-size: 0.88rem;
+    background: var(--surface);
+    transition: border-color 0.25s ease, transform 0.25s var(--ease-out);
+  }
+
+  .routes li:hover {
+    border-color: var(--brand);
+    transform: translateY(-2px);
+  }
+
+  .route-code {
+    color: var(--brand-text);
+    font-weight: 500;
+  }
+
+  .marquee {
+    margin-top: 4.5rem;
+    border-block: 1px solid var(--line);
+    padding-block: 1.1rem;
+  }
+
+  .marquee-set {
+    display: inline-flex;
+    gap: 3.5rem;
+  }
+
+  .city {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1.2px var(--muted);
+    opacity: 0.85;
+  }
+
+  .arrow {
+    color: var(--brand);
+    -webkit-text-stroke: 0;
+    opacity: 1;
+  }
+
+  @media (max-width: 760px) {
+    .routes {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

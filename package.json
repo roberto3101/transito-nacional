@@ -1,0 +1,29 @@
+{
+  "name": "transito-nacional",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tránsito Nacional E.I.R.L. — Transporte de carga pesada y logística integral en la Comunidad Andina",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "media:images": "node scripts/fal-images.mjs",
+    "media:video": "node scripts/fal-video.mjs",
+    "media:optimize": "node scripts/optimize-media.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@fontsource-variable/archivo": "^5.2.8",
+    "@fontsource/archivo-black": "^5.2.8",
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "astro": "~5.18.2",
+    "lenis": "^1.3.25"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}

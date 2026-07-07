@@ -1,0 +1,540 @@
+{
+  "lang": "es",
+  "htmlLang": "es-PE",
+  "brand": {
+    "name": "Tránsito Nacional",
+    "legalName": "Tránsito Nacional E.I.R.L.",
+    "tagline": "Transporte de carga pesada y logística integral en la Comunidad Andina",
+    "phone": "+51 938 192 665",
+    "phoneHref": "+51938192665",
+    "whatsapp": "51938192665",
+    "whatsappMsg": "Hola, quiero cotizar un transporte de carga.",
+    "email": "jose0686534@gmail.com",
+    "canBadge": "Transportista autorizado por la Comunidad Andina"
+  },
+  "meta": {
+    "home": {
+      "title": "Transporte de Carga Pesada en Perú, Ecuador y Colombia | Tránsito Nacional",
+      "description": "Transporte de carga pesada y logística integral en la Comunidad Andina: seguro de carga, trámites aduaneros, almacenaje y monitoreo 24/7. Cotiza por WhatsApp."
+    },
+    "services": {
+      "title": "Servicios de Transporte de Carga y Logística Integral | Tránsito Nacional",
+      "description": "Carga pesada, sobredimensionada y refrigerada, almacenaje, seguro de carga, aduanas y monitoreo en ruta. Servicio puerta a puerta en Perú, Ecuador y Colombia."
+    },
+    "about": {
+      "title": "Nosotros: Red Logística en la Comunidad Andina | Tránsito Nacional",
+      "description": "Décadas en carretera y una red logística que conecta Perú, Ecuador y Colombia. Conoce cómo planeamos, verificamos y entregamos cada carga."
+    },
+    "contact": {
+      "title": "Cotiza tu Carga | Contacto | Tránsito Nacional",
+      "description": "Cotiza tu transporte de carga pesada en minutos. Escríbenos por WhatsApp al +51 938 192 665 o envíanos los datos de tu envío. Respuesta el mismo día."
+    },
+    "blog": {
+      "title": "Blog de Logística y Transporte de Carga | Tránsito Nacional",
+      "description": "Guías prácticas sobre transporte de carga pesada, requisitos de la Comunidad Andina, costos y cadena de frío. Escrito desde la operación real."
+    },
+    "notFound": {
+      "title": "Página no encontrada | Tránsito Nacional",
+      "description": "La ruta que buscas no existe. Vuelve al inicio para cotizar tu carga."
+    }
+  },
+  "nav": {
+    "services": "Servicios",
+    "about": "Nosotros",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "quote": "Cotizar por WhatsApp",
+    "menuOpen": "Abrir menú",
+    "menuClose": "Cerrar menú",
+    "home": "Inicio"
+  },
+  "hero": {
+    "eyebrow": "Perú → Ecuador → Colombia",
+    "display": "Movemos lo que pesa.",
+    "lead": "Transporte de carga pesada y logística integral puerta a puerta en Perú y la Comunidad Andina.",
+    "ctaPrimary": "Cotizar por WhatsApp",
+    "ctaSecondary": "Ver servicios",
+    "videoLabel": "Camión de carga pesada recorriendo una carretera andina al atardecer"
+  },
+  "stats": {
+    "items": [
+      { "value": "3", "label": "países conectados por carretera" },
+      { "value": "24/7", "label": "monitoreo de tu carga en ruta" },
+      { "value": "100%", "label": "de la carga viaja asegurada" },
+      { "value": "+20", "label": "años de experiencia en el rubro" }
+    ]
+  },
+  "services": {
+    "eyebrow": "Servicios",
+    "title": "Un solo operador, toda la operación",
+    "lead": "Desde el planeamiento hasta la descarga en destino: asumimos la operación completa para que tu única tarea sea despachar.",
+    "viewService": "Ver servicio",
+    "items": [
+      {
+        "slug": "transporte-carga-pesada",
+        "enSlug": "heavy-cargo-transport",
+        "name": "Transporte de carga pesada",
+        "card": "Maquinaria, estructuras y volúmenes industriales por carretera, a nivel nacional e internacional.",
+        "image": "svc-carga-pesada",
+        "imageAlt": "Cama baja transportando una excavadora por una carretera andina",
+        "meta": {
+          "title": "Transporte de Carga Pesada en Perú y la CAN | Tránsito Nacional",
+          "description": "Transporte de carga pesada por carretera en Perú, Ecuador y Colombia: maquinaria, estructuras y volúmenes industriales con seguro incluido y monitoreo 24/7."
+        },
+        "h1": "Transporte de carga pesada",
+        "lead": "Movemos maquinaria, estructuras metálicas, bobinas, contenedores y volúmenes industriales por carretera, dentro del Perú y hacia Ecuador y Colombia.",
+        "includesTitle": "Qué incluye",
+        "includes": [
+          "Unidad adecuada al tipo de carga: cama baja, plataforma, furgón o bombona",
+          "Planeamiento de ruta con restricciones de peso y altura",
+          "Verificación de la carga en origen antes de enviar la unidad",
+          "Póliza de seguro desde la carga hasta la descarga",
+          "Monitoreo permanente y reportes de avance",
+          "Coordinación de permisos cuando la ruta lo exige"
+        ],
+        "body": [
+          "Cada carga pesada tiene su propia física: centro de gravedad, puntos de izaje, tolerancias de amarre. Antes de asignar la unidad estudiamos el peso real, las dimensiones y la ruta, y recién entonces confirmamos el equipo y la tarifa.",
+          "Durante el viaje, la unidad reporta su posición y tú recibes avances sin tener que preguntar. Si algo cambia en la ruta, lo sabes primero por nosotros."
+        ],
+        "faq": [
+          {
+            "q": "¿Qué tipos de unidad manejan para carga pesada?",
+            "a": "Camas bajas, camas cuna, plataformas, furgones y bombonas, según el peso, las dimensiones y la ruta de tu carga."
+          },
+          {
+            "q": "¿Cubren rutas de mina o zonas de difícil acceso?",
+            "a": "Sí. Evaluamos la ruta en el planeamiento y asignamos unidades y conductores con experiencia en altura y caminos afirmados."
+          }
+        ]
+      },
+      {
+        "slug": "carga-sobredimensionada",
+        "enSlug": "oversized-cargo",
+        "name": "Carga sobredimensionada",
+        "card": "Piezas que exceden las medidas estándar, con estudio de ruta, permisos y escolta.",
+        "image": "svc-sobredimensionada",
+        "imageAlt": "Carga sobredimensionada asegurada sobre un trailer modular de varios ejes",
+        "meta": {
+          "title": "Transporte de Carga Sobredimensionada | Tránsito Nacional",
+          "description": "Transporte de carga sobredimensionada en Perú y la Comunidad Andina: estudio de ruta, permisos, escolta y seguro incluido. Cotiza tu proyecto especial."
+        },
+        "h1": "Carga sobredimensionada",
+        "lead": "Piezas que no entran en un contenedor: tanques, tolvas, estructuras, transformadores y componentes de planta que exigen ingeniería de transporte.",
+        "includesTitle": "Qué incluye",
+        "includes": [
+          "Estudio de ruta: puentes, curvas, pendientes y cableado aéreo",
+          "Gestión de permisos especiales ante las autoridades",
+          "Vehículos escolta y señalización cuando corresponde",
+          "Plan de izaje y amarre certificado",
+          "Seguro de carga acorde al valor declarado",
+          "Coordinación con origen y destino para ventanas de entrega"
+        ],
+        "body": [
+          "Lo sobredimensionado no admite improvisación: un permiso que llega tarde o un puente mal medido detienen el proyecto completo. Nuestro planeamiento resuelve el papeleo y la ruta antes de que la pieza salga de planta.",
+          "Te entregamos un cronograma claro con hitos verificables, y lo cumplimos."
+        ],
+        "faq": [
+          {
+            "q": "¿Qué se considera carga sobredimensionada?",
+            "a": "Toda carga que excede las medidas o pesos máximos permitidos para circular sin permiso especial: generalmente más de 2.6 m de ancho, 4.3 m de alto o 48 toneladas según la normativa peruana."
+          },
+          {
+            "q": "¿Cuánto tiempo toma conseguir los permisos?",
+            "a": "Depende de la ruta y las regiones que cruza. En el planeamiento te damos un plazo realista antes de comprometer fechas."
+          }
+        ]
+      },
+      {
+        "slug": "carga-refrigerada",
+        "enSlug": "refrigerated-cargo",
+        "name": "Carga refrigerada",
+        "card": "Cadena de frío controlada y registrada para alimentos, agro y farma.",
+        "image": "svc-refrigerada",
+        "imageAlt": "Camión refrigerado cargando en un almacén de frío durante la noche",
+        "meta": {
+          "title": "Transporte de Carga Refrigerada y Cadena de Frío | Tránsito Nacional",
+          "description": "Transporte refrigerado en Perú, Ecuador y Colombia con temperatura controlada y registrada para alimentos, agroindustria y farmacéutica. Cotiza hoy."
+        },
+        "h1": "Carga refrigerada",
+        "lead": "Alimentos frescos y congelados, agroexportación y productos farmacéuticos con temperatura controlada de punta a punta.",
+        "includesTitle": "Qué incluye",
+        "includes": [
+          "Unidades refrigeradas con rangos de temperatura configurables",
+          "Registro de temperatura durante todo el trayecto",
+          "Protocolos de limpieza e inocuidad por tipo de producto",
+          "Verificación de precintos y estiba en origen",
+          "Seguro de carga que cubre la mercadería sensible",
+          "Prioridad de paso en frontera para productos perecibles"
+        ],
+        "body": [
+          "En cadena de frío el enemigo es el tiempo fuera de rango. Configuramos la unidad según tu producto, registramos la temperatura durante todo el viaje y te entregamos el historial junto con la carga.",
+          "Trabajamos con agroexportadores y distribuidores que no pueden permitirse un rechazo en destino: por eso cada viaje refrigerado se planifica con margen y con plan B."
+        ],
+        "faq": [
+          {
+            "q": "¿Qué rangos de temperatura manejan?",
+            "a": "Desde congelado profundo hasta refrigerado y ventilado. La unidad se configura según la ficha técnica de tu producto."
+          },
+          {
+            "q": "¿Puedo ver la temperatura durante el viaje?",
+            "a": "Sí. Te compartimos los registros durante el trayecto y el historial completo a la entrega."
+          }
+        ]
+      },
+      {
+        "slug": "logistica-integral",
+        "enSlug": "integrated-logistics",
+        "name": "Logística integral",
+        "card": "Planeamos tu operación completa: transporte, almacén, seguro y aduanas en un solo contrato.",
+        "image": "hero-andes",
+        "imageAlt": "Camión de carga recorriendo una carretera andina al atardecer",
+        "meta": {
+          "title": "Logística Integral para tu Carga | Tránsito Nacional",
+          "description": "Operador logístico integral en la Comunidad Andina: planeamiento, transporte, almacenaje, seguro y aduanas bajo un solo responsable. Simplifica tu operación."
+        },
+        "h1": "Logística integral",
+        "lead": "Un solo responsable para toda tu operación: planeamiento del servicio, transporte, almacén, seguro de carga y trámites aduaneros.",
+        "includesTitle": "Qué incluye",
+        "includes": [
+          "Planeamiento del servicio a la medida de tu operación",
+          "Transporte nacional e internacional por carretera",
+          "Almacenaje y cross-docking según tu flujo",
+          "Seguro de carga de punta a punta",
+          "Gestión aduanera en fronteras de la CAN",
+          "Un solo punto de contacto y una sola factura"
+        ],
+        "body": [
+          "Coordinar por separado transporte, almacén, seguro y aduanas multiplica correos, culpas y sobrecostos. Nosotros integramos las piezas y respondemos por el resultado completo.",
+          "Tú defines qué necesita tu carga; nosotros armamos la operación, la ejecutamos y te reportamos con un solo interlocutor."
+        ],
+        "faq": [
+          {
+            "q": "¿Trabajan operaciones recurrentes o solo envíos puntuales?",
+            "a": "Ambos. Para flujos recurrentes armamos un programa con tarifas y ventanas fijas; para envíos puntuales cotizamos en el día."
+          },
+          {
+            "q": "¿Qué gano frente a contratar cada servicio por separado?",
+            "a": "Un solo responsable, menos gestión interna y una tarifa integrada. Si algo falla, no hay terceros a quienes perseguir: respondemos nosotros."
+          }
+        ]
+      },
+      {
+        "slug": "almacenaje",
+        "enSlug": "warehousing",
+        "name": "Almacenaje",
+        "card": "Espacios seguros para consolidar, almacenar o distribuir tu mercadería.",
+        "image": "svc-almacen",
+        "imageAlt": "Interior de un almacén logístico con racks cargados y un montacargas en movimiento",
+        "meta": {
+          "title": "Almacenaje y Consolidación de Carga | Tránsito Nacional",
+          "description": "Almacenaje seguro en puntos estratégicos: consolidación, cross-docking y distribución integrados con tu transporte. Cotiza espacio para tu mercadería."
+        },
+        "h1": "Almacenaje",
+        "lead": "Consolida, almacena y distribuye desde puntos estratégicos, con el transporte ya integrado.",
+        "includesTitle": "Qué incluye",
+        "includes": [
+          "Recepción con control de bultos y estado de la mercadería",
+          "Almacenaje techado y vigilado",
+          "Consolidación y desconsolidación de carga",
+          "Cross-docking para flujos de distribución",
+          "Inventario reportado y trazable",
+          "Despacho coordinado con nuestra red de transporte"
+        ],
+        "body": [
+          "El almacén correcto convierte varios envíos pequeños en una operación eficiente. Consolidamos tu mercadería, la custodiamos y la despachamos en la ventana que tu cliente exige.",
+          "Al integrar almacén y transporte con un solo operador, tu carga no espera: fluye."
+        ],
+        "faq": [
+          {
+            "q": "¿Puedo almacenar por periodos cortos?",
+            "a": "Sí. Cotizamos por el tiempo real de permanencia, desde días hasta contratos mensuales."
+          },
+          {
+            "q": "¿La mercadería almacenada está asegurada?",
+            "a": "Sí, la cobertura se extiende a la permanencia en almacén cuando contratas el servicio integral."
+          }
+        ]
+      },
+      {
+        "slug": "seguro-de-carga",
+        "enSlug": "cargo-insurance",
+        "name": "Seguro de carga",
+        "card": "Tu mercadería cubierta desde que se carga hasta que se descarga en destino.",
+        "image": "svc-verificacion",
+        "imageAlt": "Inspector con casco verificando el amarre de una carga sobre plataforma",
+        "meta": {
+          "title": "Seguro de Carga Puerta a Puerta | Tránsito Nacional",
+          "description": "Seguro de carga desde el punto de carga hasta la descarga en destino, nacional e internacional. Viaja tranquilo: tu mercadería está cubierta."
+        },
+        "h1": "Seguro de carga",
+        "lead": "Cada envío viaja con póliza vigente desde que la carga sube a la unidad hasta que se descarga en destino.",
+        "includesTitle": "Qué incluye",
+        "includes": [
+          "Cobertura de punta a punta: carga, trayecto y descarga",
+          "Pólizas acordes al valor declarado de la mercadería",
+          "Cobertura nacional e internacional en la CAN",
+          "Asesoría para declarar correctamente el valor",
+          "Gestión del siniestro de principio a fin, si ocurriera",
+          "Constancia de cobertura antes de iniciar el viaje"
+        ],
+        "body": [
+          "Un flete barato sin cobertura es caro el día del problema. Por eso el seguro no es un extra en nuestra propuesta: es parte del servicio.",
+          "Antes de cada viaje recibes la constancia de cobertura con tu mercadería correctamente declarada. Si algo pasara, gestionamos el siniestro nosotros."
+        ],
+        "faq": [
+          {
+            "q": "¿El seguro está incluido en la tarifa?",
+            "a": "La propuesta siempre incluye la cobertura de la carga. El costo depende del valor declarado y del tipo de mercadería."
+          },
+          {
+            "q": "¿Qué pasa si ocurre un siniestro?",
+            "a": "Nosotros gestionamos el proceso completo con la aseguradora y te mantenemos informado hasta el cierre del caso."
+          }
+        ]
+      },
+      {
+        "slug": "tramites-aduaneros",
+        "enSlug": "customs-clearance",
+        "name": "Trámites aduaneros",
+        "card": "Documentación y aduanas resueltas para cruzar fronteras sin demoras.",
+        "image": "svc-aduanas",
+        "imageAlt": "Camiones de carga en fila en un paso fronterizo andino al amanecer",
+        "meta": {
+          "title": "Trámites Aduaneros y Transporte Internacional CAN | Tránsito Nacional",
+          "description": "Gestión aduanera para transporte terrestre entre Perú, Ecuador y Colombia: CPIC, MCI y documentación de la Comunidad Andina sin demoras en frontera."
+        },
+        "h1": "Trámites aduaneros",
+        "lead": "Preparamos y gestionamos la documentación de comercio y transporte internacional para que tu carga cruce la frontera sin detenerse.",
+        "includesTitle": "Qué incluye",
+        "includes": [
+          "Revisión documentaria antes del embarque",
+          "Emisión de CPIC y MCI para transporte internacional CAN",
+          "Coordinación con agencias de aduana en origen y destino",
+          "Gestión en los pasos de frontera de Perú, Ecuador y Colombia",
+          "Seguimiento del levante y liberación de la carga",
+          "Asesoría en regímenes y requisitos por tipo de mercadería"
+        ],
+        "body": [
+          "La frontera es donde los envíos internacionales se ganan o se pierden. Un documento mal emitido puede costar días de espera con la unidad detenida.",
+          "Operamos bajo el marco de la Decisión 399 de la Comunidad Andina y revisamos tu documentación antes del embarque, para que el cruce sea un trámite y no un problema."
+        ],
+        "faq": [
+          {
+            "q": "¿Qué documentos necesito para enviar carga a Ecuador o Colombia?",
+            "a": "Factura comercial, packing list y los documentos de transporte internacional CPIC y MCI, que nosotros emitimos como transportista autorizado. Según la mercadería pueden aplicar permisos adicionales."
+          },
+          {
+            "q": "¿Ustedes se encargan de la aduana o necesito mi propia agencia?",
+            "a": "Coordinamos el proceso completo. Si ya trabajas con una agencia de aduana, nos integramos con ella; si no, gestionamos todo nosotros."
+          }
+        ]
+      },
+      {
+        "slug": "monitoreo-de-carga",
+        "enSlug": "cargo-monitoring",
+        "name": "Monitoreo de carga",
+        "card": "Tu carga ubicada y reportada durante todo el trayecto, sin que tengas que preguntar.",
+        "image": "svc-monitoreo",
+        "imageAlt": "Vista aérea de una carretera de montaña recorrida por camiones de carga al atardecer",
+        "meta": {
+          "title": "Monitoreo de Carga en Ruta 24/7 | Tránsito Nacional",
+          "description": "Monitoreo permanente de tu carga por GPS con reportes proactivos durante todo el trayecto, desde el origen hasta la descarga en destino."
+        },
+        "h1": "Monitoreo de carga",
+        "lead": "Desde que la unidad sale del origen hasta que descarga en destino, sabes dónde está tu carga y en qué estado.",
+        "includesTitle": "Qué incluye",
+        "includes": [
+          "Ubicación GPS de la unidad durante todo el viaje",
+          "Reportes proactivos en los hitos de la ruta",
+          "Alertas tempranas ante desvíos o demoras",
+          "Contacto directo con el equipo de operaciones",
+          "Confirmación de entrega con evidencia",
+          "Historial del viaje disponible tras la entrega"
+        ],
+        "body": [
+          "El silencio es lo que más cuesta en logística: no saber dónde está la carga obliga a perseguir al proveedor. Nosotros invertimos la ecuación: te reportamos antes de que preguntes.",
+          "Cada viaje tiene hitos definidos y tú recibes la confirmación de cada uno, hasta la evidencia final de entrega."
+        ],
+        "faq": [
+          {
+            "q": "¿Cómo recibo los reportes del viaje?",
+            "a": "Por WhatsApp o correo, según prefieras: avances en cada hito y confirmación con evidencia a la entrega."
+          },
+          {
+            "q": "¿El monitoreo tiene costo adicional?",
+            "a": "No. El seguimiento de la carga es parte del servicio en todos nuestros viajes."
+          }
+        ]
+      }
+    ]
+  },
+  "process": {
+    "title": "Así viaja tu carga",
+    "lead": "Cinco etapas, un responsable. El mismo método en cada viaje, nacional o internacional.",
+    "steps": [
+      {
+        "n": "1",
+        "title": "Planeamiento",
+        "text": "Definimos contigo la ruta, la unidad, los plazos y la documentación. La tarifa que apruebas ya contiene la operación completa."
+      },
+      {
+        "n": "2",
+        "title": "Verificación en origen",
+        "text": "Visitamos el punto de carga sin costo para constatar que la mercadería esté lista, correctamente embalada y coincida con lo declarado."
+      },
+      {
+        "n": "3",
+        "title": "Carga asegurada",
+        "text": "Supervisamos la estiba y el amarre, activamos la póliza y la unidad parte con la carga cubierta desde el primer metro."
+      },
+      {
+        "n": "4",
+        "title": "Monitoreo en ruta",
+        "text": "Seguimos la unidad durante todo el trayecto y te reportamos los avances. Ante cualquier eventualidad, actuamos primero."
+      },
+      {
+        "n": "5",
+        "title": "Entrega en destino",
+        "text": "Coordinamos la descarga, confirmamos la entrega con evidencia y cerramos el viaje con el historial completo a tu disposición."
+      }
+    ]
+  },
+  "verification": {
+    "title": "Antes de cargar, vamos a verificar.",
+    "text": "Es la etapa que casi nadie ofrece y la que más problemas evita: antes de enviar la unidad, visitamos sin costo el punto donde está tu carga para constatar que esté lista. Sin sorpresas en la carga, sin falsos fletes, sin días perdidos.",
+    "point1": "Visita de verificación sin costo en el punto de origen",
+    "point2": "Confirmación de embalaje, pesos y accesos antes del viaje",
+    "point3": "La unidad llega cuando la carga realmente está lista"
+  },
+  "coverage": {
+    "eyebrow": "Cobertura",
+    "title": "La Comunidad Andina, por carretera",
+    "text": "Operamos en todo el Perú y conectamos los principales corredores de Ecuador y Colombia como transportista autorizado por la Comunidad Andina, bajo el marco de la Decisión 399.",
+    "legendNational": "Cobertura nacional",
+    "legendInternational": "Corredores internacionales",
+    "cities": ["LIMA", "AREQUIPA", "TRUJILLO", "PIURA", "CUSCO", "TUMBES", "QUITO", "GUAYAQUIL", "CUENCA", "BOGOTÁ", "MEDELLÍN", "CALI"],
+    "routes": [
+      { "code": "PE-01", "route": "Lima → Arequipa → Cusco" },
+      { "code": "PE-EC", "route": "Lima → Tumbes → Guayaquil → Quito" },
+      { "code": "PE-CO", "route": "Lima → Quito → Cali → Bogotá" }
+    ],
+    "mapLabel": "Mapa de Perú, Ecuador y Colombia con las rutas de Tránsito Nacional"
+  },
+  "industries": {
+    "title": "Sectores que ya mueven con nosotros",
+    "items": [
+      { "name": "Minería", "text": "Maquinaria, repuestos y suministros hasta la operación, en altura y caminos exigentes." },
+      { "name": "Construcción", "text": "Estructuras, equipos y materiales en obra, con ventanas de entrega coordinadas." },
+      { "name": "Agroindustria", "text": "Carga seca y refrigerada desde el campo hasta plantas, puertos y fronteras." },
+      { "name": "Retail y consumo", "text": "Distribución y reposición entre almacenes y puntos de venta, a tiempo." },
+      { "name": "Farmacéutica", "text": "Cadena de frío validada y trazable para productos sensibles." },
+      { "name": "Energía", "text": "Componentes sobredimensionados y equipos críticos para proyectos e instalaciones." }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "items": [
+      {
+        "q": "¿Hacen transporte de carga entre Perú, Ecuador y Colombia?",
+        "a": "Sí. Somos transportista autorizado por la Comunidad Andina y operamos los corredores entre Perú, Ecuador y Colombia bajo el marco de la Decisión 399, además de cubrir rutas en todo el Perú."
+      },
+      {
+        "q": "¿Qué documentos necesito para enviar carga internacional por carretera?",
+        "a": "Para el transporte internacional en la CAN se requieren la Carta de Porte Internacional por Carretera (CPIC) y el Manifiesto de Carga Internacional (MCI), además de la factura comercial y el packing list. Nosotros emitimos y gestionamos esa documentación."
+      },
+      {
+        "q": "¿La carga viaja asegurada?",
+        "a": "Sí. Toda carga viaja con póliza vigente desde que se carga en origen hasta que se descarga en el punto de destino, y recibes la constancia de cobertura antes de iniciar el viaje."
+      },
+      {
+        "q": "¿Pueden recoger la carga en mi planta o almacén?",
+        "a": "Sí, el servicio es puerta a puerta. Además, antes de enviar la unidad visitamos tu punto de carga sin costo para verificar que la mercadería esté lista y evitar falsos fletes."
+      },
+      {
+        "q": "¿Cuánto demora un envío de Lima a Bogotá?",
+        "a": "Como referencia, entre 5 y 8 días según el tipo de carga, la ruta y el paso de frontera. En el planeamiento te confirmamos un plazo comprometido para tu envío específico."
+      },
+      {
+        "q": "¿Cómo cotizo un transporte?",
+        "a": "Escríbenos por WhatsApp al +51 938 192 665 con origen, destino, tipo de carga, peso aproximado y fecha estimada. Te respondemos el mismo día con una propuesta completa."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Tu carga tiene ruta.",
+    "text": "Cuéntanos qué necesitas mover y te respondemos hoy con una propuesta completa: unidad, plazo, seguro y tarifa.",
+    "button": "Cotizar por WhatsApp",
+    "or": "o escríbenos a"
+  },
+  "about": {
+    "h1": "Nacimos en la carretera",
+    "lead": "Tránsito Nacional existe porque conocemos este rubro desde adentro: décadas coordinando carga, unidades y fronteras en el corredor andino.",
+    "story": [
+      "Antes de tener nombre propio, nuestro equipo ya movía carga por los corredores del Perú y de la Comunidad Andina. Años de operación real nos enseñaron dónde se pierde el tiempo, dónde se daña la mercadería y qué separa un flete cumplido de una promesa incumplida.",
+      "Con esa experiencia construimos Tránsito Nacional: un operador que asume la responsabilidad completa del viaje, desde el planeamiento y la verificación en origen hasta la descarga en destino, con la carga siempre asegurada y monitoreada.",
+      "Hoy conectamos Perú, Ecuador y Colombia como transportista autorizado por la Comunidad Andina, con una red de unidades y aliados que nos permite asignar el equipo correcto para cada tipo de carga, en cada ruta."
+    ],
+    "valuesTitle": "Cómo trabajamos",
+    "values": [
+      { "title": "Responsabilidad total", "text": "Un solo responsable de punta a punta. Si algo pasa en el viaje, respondemos nosotros, no un tercero." },
+      { "title": "Verificar antes que prometer", "text": "Vamos al origen antes de enviar la unidad. Los problemas se detectan en el patio, no en la carretera." },
+      { "title": "Información sin perseguir", "text": "Reportamos avances antes de que preguntes. El silencio no es una opción cuando tu carga está en ruta." }
+    ],
+    "ctaTitle": "Conversemos sobre tu operación",
+    "ctaText": "Si mueves carga con frecuencia, armemos un programa a tu medida."
+  },
+  "contact": {
+    "h1": "Cotiza tu carga",
+    "lead": "Completa los datos de tu envío y recibe una propuesta el mismo día. También puedes escribirnos directamente por WhatsApp o correo.",
+    "form": {
+      "name": "Nombre",
+      "namePh": "Tu nombre",
+      "company": "Empresa",
+      "companyPh": "Nombre de tu empresa (opcional)",
+      "origin": "Origen",
+      "originPh": "Ciudad de recojo",
+      "destination": "Destino",
+      "destinationPh": "Ciudad de entrega",
+      "cargoType": "Tipo de carga",
+      "cargoTypePh": "Ej.: maquinaria, pallets, refrigerada",
+      "weight": "Peso aproximado",
+      "weightPh": "Ej.: 12 toneladas",
+      "message": "Detalles adicionales",
+      "messagePh": "Fechas, dimensiones, accesos o cualquier dato útil",
+      "submit": "Enviar cotización por WhatsApp",
+      "hint": "Al enviar se abrirá WhatsApp con tu solicitud lista para mandar."
+    },
+    "directTitle": "Contacto directo",
+    "phoneLabel": "Llámanos o escríbenos",
+    "emailLabel": "Correo",
+    "hoursLabel": "Operaciones",
+    "hoursValue": "Monitoreo de carga las 24 horas"
+  },
+  "blog": {
+    "title": "Blog",
+    "lead": "Guías prácticas escritas desde la operación real: requisitos, costos y buenas prácticas para mover carga en la región andina.",
+    "readMore": "Leer artículo",
+    "backToBlog": "Volver al blog",
+    "publishedOn": "Publicado el",
+    "relatedCta": "¿Necesitas mover carga?"
+  },
+  "footer": {
+    "servicesTitle": "Servicios",
+    "companyTitle": "Empresa",
+    "contactTitle": "Contacto",
+    "rights": "Todos los derechos reservados.",
+    "can": "Transportista autorizado por la Comunidad Andina · Decisión 399"
+  },
+  "a11y": {
+    "skipToContent": "Saltar al contenido",
+    "themeToggle": "Cambiar tema de color",
+    "langSwitch": "Switch to English",
+    "whatsappFab": "Cotizar por WhatsApp",
+    "breadcrumbHome": "Inicio"
+  },
+  "notFound": {
+    "title": "Ruta no encontrada",
+    "text": "La página que buscas no existe o cambió de dirección.",
+    "back": "Volver al inicio"
+  }
+}

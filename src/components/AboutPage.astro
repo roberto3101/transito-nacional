@@ -1,0 +1,174 @@
+---
+import Base from '../layouts/Base.astro';
+import Picture from './Picture.astro';
+import CtaBand from './home/CtaBand.astro';
+import { useDict, whatsappHref, type Lang } from '../lib/i18n';
+import { graph, orgNode, websiteNode, breadcrumbNode, SITE } from '../lib/seo';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = useDict(lang);
+const esPath = '/nosotros';
+const enPath = '/en/about';
+const here = lang === 'es' ? esPath : enPath;
+
+const jsonLd = graph(
+  orgNode(d),
+  websiteNode(d, lang),
+  breadcrumbNode([
+    { name: d.a11y.breadcrumbHome, url: `${SITE}${lang === 'es' ? '/' : '/en'}` },
+    { name: d.nav.about, url: `${SITE}${here}` },
+  ])
+);
+---
+
+<Base lang={lang} title={d.meta.about.title} description={d.meta.about.description} esPath={esPath} enPath={enPath} jsonLd={jsonLd}>
+  <section class="section about-hero">
+    <div class="container about-grid">
+      <div>
+        <h1 class="h2 reveal">{d.about.h1}</h1>
+        <p class="lead reveal" style="--reveal-delay:.08s">{d.about.lead}</p>
+        <div class="story">
+          {d.about.story.map((para, i) => (
+            <p class="reveal" style={`--reveal-delay:${0.12 + i * 0.05}s`}>{para}</p>
+          ))}
+        </div>
+        <p class="can-badge mono reveal" style="--reveal-delay:.3s">{d.brand.canBadge}</p>
+      </div>
+
+      <figure class="media-card about-media reveal" style="--reveal-delay:.12s">
+        <Picture
+          name="svc-monitoreo"
+          alt={lang === 'es' ? 'Camiones de carga recorriendo una carretera de montaña andina' : 'Cargo trucks traveling an Andean mountain highway'}
+          sizes="(max-width: 900px) 100vw, 44vw"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section values">
+    <div class="container">
+      <h2 class="h2 reveal">{d.about.valuesTitle}</h2>
+      <ul>
+        {d.about.values.map((v, i) => (
+          <li class="reveal" style={`--reveal-delay:${i * 0.08}s`}>
+            <h3 class="h3">{v.title}</h3>
+            <p>{v.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section about-cta">
+    <div class="container">
+      <h2 class="h2 reveal">{d.about.ctaTitle}</h2>
+      <p class="lead reveal" style="--reveal-delay:.06s">{d.about.ctaText}</p>
+      <a href={whatsappHref(lang)} class="btn btn-primary reveal" style="--reveal-delay:.12s" target="_blank" rel="noopener">
+        {d.nav.quote}
+      </a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: start;
+  }
+
+  h1 {
+    max-width: 14ch;
+  }
+
+  .lead {
+    margin-top: 1.2rem;
+  }
+
+  .story {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    color: var(--muted);
+    max-width: 58ch;
+  }
+
+  .can-badge {
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-text);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-control);
+    padding: 0.7rem 1rem;
+    display: inline-block;
+  }
+
+  .about-media {
+    aspect-ratio: 4 / 5;
+    box-shadow: var(--shadow-card);
+    position: sticky;
+    top: 110px;
+  }
+
+  .about-media :global(img) {
+    height: 100%;
+  }
+
+  .values {
+    background: var(--surface);
+    border-block: 1px solid var(--line);
+  }
+
+  .values ul {
+    margin-top: 2.8rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .values li {
+    border-top: 2px solid var(--line-strong);
+    padding-top: 1.2rem;
+  }
+
+  .values li:hover {
+    border-top-color: var(--brand);
+  }
+
+  .values p {
+    margin-top: 0.6rem;
+    color: var(--muted);
+    font-size: 0.97rem;
+  }
+
+  .about-cta .lead {
+    margin-top: 1rem;
+  }
+
+  .about-cta .btn {
+    margin-top: 1.8rem;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-media {
+      position: static;
+      aspect-ratio: 16 / 10;
+    }
+
+    .values ul {
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+    }
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+/**
+ * Imagen responsive servida en AVIF + WebP + JPEG.
+ * Los archivos los produce `npm run media:optimize` en /public/media/img/
+ * con anchos fijos [768, 1280, 1920].
+ */
+interface Props {
+  name: string;
+  alt: string;
+  sizes?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'auto';
+  class?: string;
+  width?: number;
+  height?: number;
+}
+const {
+  name,
+  alt,
+  sizes = '(max-width: 768px) 100vw, 50vw',
+  loading = 'lazy',
+  fetchpriority = 'auto',
+  class: className,
+  width = 1472,
+  height = 832,
+} = Astro.props;
+
+const WIDTHS = [768, 1280, 1920];
+const set = (ext: string) => WIDTHS.map((w) => `/media/img/${name}-${w}.${ext} ${w}w`).join(', ');
+---
+
+<picture>
+  <source type="image/avif" srcset={set('avif')} sizes={sizes} />
+  <source type="image/webp" srcset={set('webp')} sizes={sizes} />
+  <img
+    src={`/media/img/${name}-1280.jpg`}
+    srcset={set('jpg')}
+    sizes={sizes}
+    alt={alt}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding={loading === 'eager' ? 'sync' : 'async'}
+    width={width}
+    height={height}
+    class={className}
+  />
+</picture>

@@ -1,0 +1,61 @@
+---
+import { useDict, type Lang } from '../../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = useDict(lang);
+---
+
+<section class="section industries">
+  <div class="container">
+    <h2 class="h2 reveal-line">{d.industries.title}</h2>
+    <ul>
+      {d.industries.items.map((it, i) => (
+        <li class="reveal" style={`--reveal-delay:${(i % 3) * 0.07}s`}>
+          <h3 class="h3">{it.name}</h3>
+          <p>{it.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  ul {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.6rem 3rem;
+  }
+
+  li {
+    border-top: 2px solid var(--line-strong);
+    padding-top: 1.3rem;
+    transition: border-color 0.3s ease;
+  }
+
+  li:hover {
+    border-top-color: var(--brand);
+  }
+
+  li p {
+    margin-top: 0.6rem;
+    color: var(--muted);
+    font-size: 0.97rem;
+  }
+
+  @media (max-width: 900px) {
+    ul {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    ul {
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+    }
+  }
+</style>

@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from './Hero.astro';
+import StatsBand from './StatsBand.astro';
+import ServicesBento from './ServicesBento.astro';
+import ProcessRoute from './ProcessRoute.astro';
+import Verification from './Verification.astro';
+import Coverage from './Coverage.astro';
+import Industries from './Industries.astro';
+import FaqSection from './FaqSection.astro';
+import CtaBand from './CtaBand.astro';
+import { useDict, type Lang } from '../../lib/i18n';
+import { graph, orgNode, websiteNode, faqNode } from '../../lib/seo';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = useDict(lang);
+
+const jsonLd = graph(orgNode(d), websiteNode(d, lang), faqNode(d.faq.items));
+---
+
+<Base
+  lang={lang}
+  title={d.meta.home.title}
+  description={d.meta.home.description}
+  esPath="/"
+  enPath="/en"
+  jsonLd={jsonLd}
+  preloadImage="/media/img/hero-andes-1920.jpg"
+>
+  {/* Cada bloque es un waypoint del corredor Lima → Bogotá (HUD de ruta) */}
+  <div data-waypoint="Lima · km 0"><Hero lang={lang} /><StatsBand lang={lang} /></div>
+  <div data-waypoint="Trujillo · km 560"><ServicesBento lang={lang} /></div>
+  <div data-waypoint="Piura · km 1035"><ProcessRoute lang={lang} /></div>
+  <div data-waypoint={lang === 'es' ? 'Tumbes · frontera' : 'Tumbes · border'}><Verification lang={lang} /></div>
+  <div data-waypoint="Quito · km 1990"><Coverage lang={lang} /></div>
+  <div data-waypoint="Cali · km 2750"><Industries lang={lang} /><FaqSection lang={lang} /></div>
+  <div data-waypoint="Bogotá · km 3190"><CtaBand lang={lang} /></div>
+</Base>

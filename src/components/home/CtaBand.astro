@@ -1,0 +1,207 @@
+---
+import { useDict, whatsappHref, type Lang } from '../../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = useDict(lang);
+const kmLabel = lang === 'es' ? 'KM 3190 · DESTINO' : 'KM 3190 · DESTINATION';
+---
+
+<section class="section">
+  <div class="container">
+    <div class="cta-band reveal">
+      <!-- Haz de luz orbitando el borde -->
+      <span class="beam-wrap" aria-hidden="true"><span class="beam"></span></span>
+
+      <!-- Curvas de nivel: textura de cordillera sobre el naranja -->
+      <svg class="cta-topo" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g fill="none" stroke="var(--brand-ink)" stroke-opacity="0.09" stroke-width="1.5">
+          <path d="M-20 250 C 120 220 200 280 340 250 S 560 220 620 248" />
+          <path d="M-20 278 C 130 250 220 306 360 276 S 570 248 620 274" />
+          <path d="M-20 302 C 140 280 230 322 380 300 S 580 278 620 300" />
+          <path d="M-20 66 C 140 40 230 92 380 62 S 580 34 620 60" />
+          <path d="M-20 40 C 150 16 240 66 400 38 S 590 12 620 36" />
+        </g>
+      </svg>
+
+      <!-- Marco de esquinas -->
+      <span class="cf tl">+</span><span class="cf tr">+</span>
+      <span class="cf bl">+</span><span class="cf br">+</span>
+
+      <!-- Ruta que llega al pin (destino) con marcas de kilómetro -->
+      <svg class="cta-route" viewBox="0 0 480 210" fill="none" aria-hidden="true" data-observe>
+        <path class="cta-path" d="M-10 176 C 90 156, 150 66, 260 48 S 400 30, 428 26" pathLength="1" fill="none" stroke="var(--brand-ink)" stroke-width="2.5" stroke-linecap="round" />
+        <g class="cta-ticks" fill="var(--brand-ink)">
+          <circle cx="60" cy="150" r="2.4" /><circle cx="150" cy="96" r="2.4" />
+          <circle cx="260" cy="48" r="2.4" /><circle cx="360" cy="30" r="2.4" />
+        </g>
+        <g class="cta-pin" transform="translate(414 -8) scale(0.62)">
+          <path d="M24 2C12.4 2 3 11.4 3 23c0 8.7 5 16 11.9 22.7L24 58l9.1-12.3C40 39 45 31.7 45 23 45 11.4 35.6 2 24 2Z" fill="var(--brand-ink)" />
+          <circle cx="24" cy="22.5" r="8.5" fill="var(--brand)" />
+        </g>
+      </svg>
+
+      <div class="cta-content">
+        <span class="cta-eyebrow mono">{kmLabel}</span>
+        <h2 class="display">{d.cta.title}</h2>
+        <p>{d.cta.text}</p>
+        <div class="cta-actions">
+          <a href={whatsappHref(lang)} class="btn cta-btn btn-shine" target="_blank" rel="noopener">{d.cta.button}</a>
+          <span class="cta-or">{d.cta.or} <a href={`mailto:${d.brand.email}`} class="cta-mail">{d.brand.email}</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-band {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--brand-strong) 0%, var(--brand) 45%, #ffa04a 100%);
+    color: var(--brand-ink);
+    border-radius: var(--r-card);
+    padding: clamp(2.8rem, 6vw, 4.8rem);
+    box-shadow: 0 30px 70px -30px rgba(238, 122, 24, 0.7);
+  }
+
+  .cta-topo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .cf {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--brand-ink);
+    opacity: 0.5;
+    line-height: 1;
+  }
+
+  .cf.tl { top: 14px; left: 16px; }
+  .cf.tr { top: 14px; right: 16px; }
+  .cf.bl { bottom: 14px; left: 16px; }
+  .cf.br { bottom: 14px; right: 16px; }
+
+  .cta-route {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: min(54%, 500px);
+    height: 100%;
+    z-index: -1;
+    opacity: 0.62;
+  }
+
+  .cta-path {
+    stroke: var(--brand-ink);
+    stroke-width: 2.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-dasharray: 6 7;
+  }
+
+  .cta-ticks circle {
+    fill: var(--brand-ink);
+    opacity: 0;
+  }
+
+  .cta-pin {
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .cta-route .cta-path {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+    .cta-route.in-view .cta-path {
+      animation: cta-draw 2s var(--ease-out) forwards;
+    }
+    .cta-route.in-view .cta-ticks circle {
+      animation: tick-in 0.4s ease forwards;
+    }
+    .cta-route.in-view .cta-ticks circle:nth-child(1) { animation-delay: 0.5s; }
+    .cta-route.in-view .cta-ticks circle:nth-child(2) { animation-delay: 0.9s; }
+    .cta-route.in-view .cta-ticks circle:nth-child(3) { animation-delay: 1.3s; }
+    .cta-route.in-view .cta-ticks circle:nth-child(4) { animation-delay: 1.7s; }
+    .cta-route.in-view .cta-pin {
+      animation: tick-in 0.5s 2s ease forwards;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-ticks circle,
+    .cta-pin { opacity: 1; }
+    .cta-path { stroke-dasharray: 6 7; }
+  }
+
+  @keyframes cta-draw { to { stroke-dashoffset: 0; } }
+  @keyframes tick-in { to { opacity: 1; } }
+
+  .cta-content {
+    position: relative;
+    max-width: 40ch;
+  }
+
+  .cta-eyebrow {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.24em;
+    color: var(--brand-ink);
+    opacity: 0.72;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid rgba(29, 19, 10, 0.3);
+    border-radius: 999px;
+    margin-bottom: 1.3rem;
+  }
+
+  h2 {
+    font-size: clamp(2.3rem, 5.2vw, 4.2rem);
+    line-height: 0.92;
+    max-width: 12ch;
+  }
+
+  p {
+    margin-top: 1.2rem;
+    max-width: 44ch;
+    font-weight: 500;
+    color: rgba(29, 19, 10, 0.86);
+  }
+
+  .cta-actions {
+    margin-top: 2.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.4rem;
+  }
+
+  .cta-btn {
+    background: var(--brand-ink);
+    color: #fff;
+    padding: 1.05rem 1.9rem;
+    box-shadow: 0 10px 30px -8px rgba(29, 19, 10, 0.5);
+  }
+
+  .cta-btn:hover {
+    background: #000;
+  }
+
+  .cta-or {
+    font-size: 0.95rem;
+  }
+
+  .cta-mail {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

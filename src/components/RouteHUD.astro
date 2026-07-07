@@ -1,0 +1,55 @@
+---
+/**
+ * HUD de ruta: odómetro fijo que convierte el scroll en el viaje
+ * Lima → Bogotá. La línea (spine) se llena con el progreso de lectura
+ * y el waypoint cambia según la sección visible ([data-waypoint]).
+ * Sin listeners de scroll: CSS scroll-driven animation + IntersectionObserver.
+ */
+interface Props {
+  routeLabel?: string;
+}
+const { routeLabel = 'Lima → Bogotá' } = Astro.props;
+---
+
+<div class="route-hud" aria-hidden="true">
+  <div class="route-spine">
+    <i class="route-spine-fill"></i>
+  </div>
+  <p class="hud-readout">
+    <span class="hud-km"></span>
+    <span class="hud-waypoint" id="hud-waypoint">{routeLabel}</span>
+  </p>
+</div>
+
+<script>
+  import { onReady } from '../lib/ready';
+
+  // Actualiza el waypoint del HUD según la sección visible.
+  const initHud = () => {
+    const label = document.getElementById('hud-waypoint');
+    const sections = document.querySelectorAll<HTMLElement>('[data-waypoint]');
+    if (!label || !sections.length || label.dataset.bound) return;
+    label.dataset.bound = '1';
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            const next = (e.target as HTMLElement).dataset.waypoint!;
+            if (label.textContent !== next) {
+              label.classList.add('swap');
+              setTimeout(() => {
+                label.textContent = next;
+                label.classList.remove('swap');
+              }, 220);
+            }
+          }
+        }
+      },
+      { rootMargin: '-42% 0px -42% 0px' }
+    );
+    sections.forEach((s) => io.observe(s));
+  };
+
+  onReady(initHud);
+</script>

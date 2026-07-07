@@ -1,0 +1,153 @@
+---
+import Logo from './Logo.astro';
+import { useDict, p, services, type Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = useDict(lang);
+const svcBase = lang === 'es' ? '/servicios' : '/services';
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <!-- Cierre tipográfico: la marca como paisaje -->
+  <p class="footer-brandline display" aria-hidden="true">Tránsito Nacional</p>
+
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <Logo />
+      <p class="footer-tagline">{d.brand.tagline}</p>
+      <p class="footer-can mono">{d.footer.can}</p>
+    </div>
+
+    <nav aria-label={d.footer.servicesTitle}>
+      <h2 class="footer-title mono">{d.footer.servicesTitle}</h2>
+      <ul>
+        {services(lang).map((s) => (
+          <li><a href={p(lang, `${svcBase}/${s.slug}`)}>{s.name}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <nav aria-label={d.footer.companyTitle}>
+      <h2 class="footer-title mono">{d.footer.companyTitle}</h2>
+      <ul>
+        <li><a href={p(lang, lang === 'es' ? '/nosotros' : '/about')}>{d.nav.about}</a></li>
+        {lang === 'es' && <li><a href="/blog">{d.nav.blog}</a></li>}
+        <li><a href={p(lang, lang === 'es' ? '/contacto' : '/contact')}>{d.nav.contact}</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <h2 class="footer-title mono">{d.footer.contactTitle}</h2>
+      <ul>
+        <li><a href={`tel:${d.brand.phoneHref}`} class="mono">{d.brand.phone}</a></li>
+        <li><a href={`mailto:${d.brand.email}`}>{d.brand.email}</a></li>
+        <li class="footer-loc">Lima, Perú</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-legal">
+    <p>© {year} {d.brand.legalName}. {d.footer.rights}</p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+    margin-top: var(--section);
+    overflow: hidden;
+  }
+
+  .footer-brandline {
+    font-size: clamp(3rem, 10.5vw, 10rem);
+    line-height: 0.9;
+    white-space: nowrap;
+    text-align: center;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--line-strong);
+    user-select: none;
+    padding-top: 3.2rem;
+    margin-bottom: -0.6rem;
+    opacity: 0.85;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.8fr 1fr;
+    gap: 3rem;
+    padding-block: 4rem 3rem;
+  }
+
+  .footer-tagline {
+    margin-top: 1.1rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 30ch;
+  }
+
+  .footer-can {
+    margin-top: 1.2rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand-text);
+  }
+
+  .footer-title {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.1rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  ul a {
+    font-size: 0.95rem;
+    color: var(--text);
+    transition: color 0.2s ease;
+  }
+
+  ul a:hover {
+    color: var(--brand);
+  }
+
+  .footer-loc {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .footer-legal {
+    border-top: 1px solid var(--line);
+    padding-block: 1.4rem;
+  }
+
+  .footer-legal p {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 960px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2.2rem;
+    }
+  }
+</style>

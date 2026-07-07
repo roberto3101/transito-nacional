@@ -1,0 +1,540 @@
+{
+  "lang": "en",
+  "htmlLang": "en",
+  "brand": {
+    "name": "Tránsito Nacional",
+    "legalName": "Tránsito Nacional E.I.R.L.",
+    "tagline": "Heavy cargo transport and integrated logistics across the Andean Community",
+    "phone": "+51 938 192 665",
+    "phoneHref": "+51938192665",
+    "whatsapp": "51938192665",
+    "whatsappMsg": "Hello, I would like a freight quote.",
+    "email": "jose0686534@gmail.com",
+    "canBadge": "Carrier authorized by the Andean Community"
+  },
+  "meta": {
+    "home": {
+      "title": "Heavy Cargo Transport in Peru, Ecuador and Colombia | Tránsito Nacional",
+      "description": "Heavy cargo transport and integrated logistics across the Andean Community: cargo insurance, customs clearance, warehousing and 24/7 monitoring. Get a quote on WhatsApp."
+    },
+    "services": {
+      "title": "Freight Transport and Integrated Logistics Services | Tránsito Nacional",
+      "description": "Heavy, oversized and refrigerated cargo, warehousing, cargo insurance, customs and in-route monitoring. Door-to-door service in Peru, Ecuador and Colombia."
+    },
+    "about": {
+      "title": "About Us: Logistics Network in the Andean Community | Tránsito Nacional",
+      "description": "Decades on the road and a logistics network connecting Peru, Ecuador and Colombia. See how we plan, verify and deliver every load."
+    },
+    "contact": {
+      "title": "Get a Freight Quote | Contact | Tránsito Nacional",
+      "description": "Quote your heavy cargo shipment in minutes. Message us on WhatsApp at +51 938 192 665 or send your shipment details. Same-day response."
+    },
+    "blog": {
+      "title": "Logistics and Freight Blog | Tránsito Nacional",
+      "description": "Practical guides on heavy cargo transport, Andean Community requirements, costs and cold chain. Written from real operations."
+    },
+    "notFound": {
+      "title": "Page not found | Tránsito Nacional",
+      "description": "The route you are looking for does not exist. Go back home to quote your shipment."
+    }
+  },
+  "nav": {
+    "services": "Services",
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact",
+    "quote": "Quote on WhatsApp",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "home": "Home"
+  },
+  "hero": {
+    "eyebrow": "Peru → Ecuador → Colombia",
+    "display": "We move what's heavy.",
+    "lead": "Heavy cargo transport and door-to-door integrated logistics in Peru and the Andean Community.",
+    "ctaPrimary": "Quote on WhatsApp",
+    "ctaSecondary": "View services",
+    "videoLabel": "Heavy cargo truck driving along an Andean highway at dusk"
+  },
+  "stats": {
+    "items": [
+      { "value": "3", "label": "countries connected by road" },
+      { "value": "24/7", "label": "in-route cargo monitoring" },
+      { "value": "100%", "label": "of cargo travels insured" },
+      { "value": "+20", "label": "years of industry experience" }
+    ]
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "One operator, the whole operation",
+    "lead": "From planning to unloading at destination: we run the entire operation so your only task is to dispatch.",
+    "viewService": "View service",
+    "items": [
+      {
+        "slug": "heavy-cargo-transport",
+        "esSlug": "transporte-carga-pesada",
+        "name": "Heavy cargo transport",
+        "card": "Machinery, structures and industrial volumes by road, nationwide and cross-border.",
+        "image": "svc-carga-pesada",
+        "imageAlt": "Lowbed trailer hauling an excavator along an Andean highway",
+        "meta": {
+          "title": "Heavy Cargo Transport in Peru and the Andean Community | Tránsito Nacional",
+          "description": "Heavy cargo road transport in Peru, Ecuador and Colombia: machinery, structures and industrial volumes with insurance included and 24/7 monitoring."
+        },
+        "h1": "Heavy cargo transport",
+        "lead": "We move machinery, steel structures, coils, containers and industrial volumes by road, within Peru and across to Ecuador and Colombia.",
+        "includesTitle": "What's included",
+        "includes": [
+          "The right unit for the load: lowbed, flatbed, box truck or tanker",
+          "Route planning with weight and height restrictions",
+          "Cargo verification at origin before dispatching the unit",
+          "Insurance policy from loading to unloading",
+          "Permanent monitoring and progress reports",
+          "Permit coordination when the route requires it"
+        ],
+        "body": [
+          "Every heavy load has its own physics: center of gravity, lifting points, lashing tolerances. Before assigning the unit we study the real weight, dimensions and route, and only then confirm the equipment and the rate.",
+          "During the trip, the unit reports its position and you receive updates without having to ask. If anything changes on the road, you hear it from us first."
+        ],
+        "faq": [
+          {
+            "q": "What kinds of units do you run for heavy cargo?",
+            "a": "Lowbeds, cradle beds, flatbeds, box trucks and tankers, depending on the weight, dimensions and route of your load."
+          },
+          {
+            "q": "Do you cover mining routes or hard-to-reach areas?",
+            "a": "Yes. We assess the route during planning and assign units and drivers experienced in high altitude and gravel roads."
+          }
+        ]
+      },
+      {
+        "slug": "oversized-cargo",
+        "esSlug": "carga-sobredimensionada",
+        "name": "Oversized cargo",
+        "card": "Pieces beyond standard dimensions, with route studies, permits and escort vehicles.",
+        "image": "svc-sobredimensionada",
+        "imageAlt": "Oversized cargo secured on a multi-axle modular trailer",
+        "meta": {
+          "title": "Oversized Cargo Transport | Tránsito Nacional",
+          "description": "Oversized cargo transport in Peru and the Andean Community: route study, permits, escort and insurance included. Quote your special project."
+        },
+        "h1": "Oversized cargo",
+        "lead": "Pieces that do not fit in a container: tanks, hoppers, structures, transformers and plant components that demand transport engineering.",
+        "includesTitle": "What's included",
+        "includes": [
+          "Route study: bridges, curves, slopes and overhead cabling",
+          "Special permit management with the authorities",
+          "Escort vehicles and signaling where required",
+          "Certified lifting and lashing plan",
+          "Cargo insurance matching the declared value",
+          "Delivery window coordination with origin and destination"
+        ],
+        "body": [
+          "Oversized freight leaves no room for improvisation: a late permit or a mismeasured bridge stops the whole project. Our planning solves the paperwork and the route before the piece leaves the plant.",
+          "You get a clear schedule with verifiable milestones, and we meet it."
+        ],
+        "faq": [
+          {
+            "q": "What counts as oversized cargo?",
+            "a": "Any load exceeding the legal limits to circulate without a special permit: generally more than 2.6 m wide, 4.3 m high or 48 tonnes under Peruvian regulations."
+          },
+          {
+            "q": "How long do permits take?",
+            "a": "It depends on the route and the regions it crosses. During planning we give you a realistic timeline before committing dates."
+          }
+        ]
+      },
+      {
+        "slug": "refrigerated-cargo",
+        "esSlug": "carga-refrigerada",
+        "name": "Refrigerated cargo",
+        "card": "Controlled, logged cold chain for food, agro and pharma.",
+        "image": "svc-refrigerada",
+        "imageAlt": "Refrigerated truck loading at a cold storage dock at night",
+        "meta": {
+          "title": "Refrigerated Cargo and Cold Chain Transport | Tránsito Nacional",
+          "description": "Refrigerated transport in Peru, Ecuador and Colombia with controlled, logged temperature for food, agribusiness and pharma. Get a quote today."
+        },
+        "h1": "Refrigerated cargo",
+        "lead": "Fresh and frozen food, agro exports and pharmaceutical products with temperature controlled end to end.",
+        "includesTitle": "What's included",
+        "includes": [
+          "Refrigerated units with configurable temperature ranges",
+          "Temperature logging throughout the journey",
+          "Cleaning and safety protocols per product type",
+          "Seal and stowage verification at origin",
+          "Cargo insurance covering sensitive goods",
+          "Border priority for perishable products"
+        ],
+        "body": [
+          "In cold chain, the enemy is time out of range. We configure the unit for your product, log the temperature during the whole trip and hand you the history together with the cargo.",
+          "We work with agro exporters and distributors who cannot afford a rejection at destination: every refrigerated trip is planned with margin and with a plan B."
+        ],
+        "faq": [
+          {
+            "q": "What temperature ranges do you handle?",
+            "a": "From deep frozen to chilled and ventilated. The unit is configured to your product's technical sheet."
+          },
+          {
+            "q": "Can I see the temperature during the trip?",
+            "a": "Yes. We share the logs during transit and the full history upon delivery."
+          }
+        ]
+      },
+      {
+        "slug": "integrated-logistics",
+        "esSlug": "logistica-integral",
+        "name": "Integrated logistics",
+        "card": "We plan your full operation: transport, warehousing, insurance and customs under one contract.",
+        "image": "hero-andes",
+        "imageAlt": "Cargo truck driving along an Andean highway at dusk",
+        "meta": {
+          "title": "Integrated Logistics for Your Cargo | Tránsito Nacional",
+          "description": "Integrated logistics operator in the Andean Community: planning, transport, warehousing, insurance and customs under a single accountable partner."
+        },
+        "h1": "Integrated logistics",
+        "lead": "A single accountable partner for your whole operation: service planning, transport, warehousing, cargo insurance and customs.",
+        "includesTitle": "What's included",
+        "includes": [
+          "Service planning tailored to your operation",
+          "National and international road transport",
+          "Warehousing and cross-docking to match your flow",
+          "End-to-end cargo insurance",
+          "Customs management at CAN borders",
+          "One point of contact and one invoice"
+        ],
+        "body": [
+          "Coordinating transport, warehousing, insurance and customs separately multiplies emails, blame and cost overruns. We integrate the pieces and answer for the complete result.",
+          "You define what your cargo needs; we build the operation, run it and report back through a single contact."
+        ],
+        "faq": [
+          {
+            "q": "Do you handle recurring operations or only one-off shipments?",
+            "a": "Both. For recurring flows we set up a program with fixed rates and windows; for one-off shipments we quote same day."
+          },
+          {
+            "q": "What do I gain versus hiring each service separately?",
+            "a": "One accountable partner, less internal management and an integrated rate. If something fails, there are no third parties to chase: we answer."
+          }
+        ]
+      },
+      {
+        "slug": "warehousing",
+        "esSlug": "almacenaje",
+        "name": "Warehousing",
+        "card": "Secure space to consolidate, store or distribute your goods.",
+        "image": "svc-almacen",
+        "imageAlt": "Logistics warehouse interior with loaded racks and a forklift",
+        "meta": {
+          "title": "Warehousing and Cargo Consolidation | Tránsito Nacional",
+          "description": "Secure warehousing at strategic points: consolidation, cross-docking and distribution integrated with your transport. Quote space for your goods."
+        },
+        "h1": "Warehousing",
+        "lead": "Consolidate, store and distribute from strategic points, with transport already integrated.",
+        "includesTitle": "What's included",
+        "includes": [
+          "Reception with package count and condition control",
+          "Covered, guarded storage",
+          "Cargo consolidation and deconsolidation",
+          "Cross-docking for distribution flows",
+          "Reported, traceable inventory",
+          "Dispatch coordinated with our transport network"
+        ],
+        "body": [
+          "The right warehouse turns several small shipments into one efficient operation. We consolidate your goods, guard them and dispatch them in the window your client demands.",
+          "With warehousing and transport under one operator, your cargo does not wait: it flows."
+        ],
+        "faq": [
+          {
+            "q": "Can I store for short periods?",
+            "a": "Yes. We quote for the actual time stored, from days to monthly contracts."
+          },
+          {
+            "q": "Are stored goods insured?",
+            "a": "Yes, coverage extends to warehouse dwell time when you contract the integrated service."
+          }
+        ]
+      },
+      {
+        "slug": "cargo-insurance",
+        "esSlug": "seguro-de-carga",
+        "name": "Cargo insurance",
+        "card": "Your goods covered from loading until unloading at destination.",
+        "image": "svc-verificacion",
+        "imageAlt": "Inspector in a hard hat checking cargo lashing on a flatbed",
+        "meta": {
+          "title": "Door-to-Door Cargo Insurance | Tránsito Nacional",
+          "description": "Cargo insurance from the loading point until unloading at destination, national and international. Ship with peace of mind: your goods are covered."
+        },
+        "h1": "Cargo insurance",
+        "lead": "Every shipment travels with an active policy from the moment cargo is loaded until it is unloaded at destination.",
+        "includesTitle": "What's included",
+        "includes": [
+          "End-to-end coverage: loading, transit and unloading",
+          "Policies matching the declared value of the goods",
+          "National and international coverage across the CAN",
+          "Guidance to declare value correctly",
+          "Full claim management, should one occur",
+          "Proof of coverage before the trip begins"
+        ],
+        "body": [
+          "A cheap freight rate without coverage becomes expensive the day something goes wrong. That is why insurance is not an add-on in our proposal: it is part of the service.",
+          "Before each trip you receive proof of coverage with your goods properly declared. If anything happened, we manage the claim ourselves."
+        ],
+        "faq": [
+          {
+            "q": "Is insurance included in the rate?",
+            "a": "Our proposal always includes cargo coverage. The cost depends on the declared value and the type of goods."
+          },
+          {
+            "q": "What happens if there is a claim?",
+            "a": "We manage the entire process with the insurer and keep you informed until the case is closed."
+          }
+        ]
+      },
+      {
+        "slug": "customs-clearance",
+        "esSlug": "tramites-aduaneros",
+        "name": "Customs clearance",
+        "card": "Documentation and customs solved so you cross borders without delays.",
+        "image": "svc-aduanas",
+        "imageAlt": "Cargo trucks queued at an Andean border crossing at dawn",
+        "meta": {
+          "title": "Customs Clearance and CAN Cross-Border Transport | Tránsito Nacional",
+          "description": "Customs management for road transport between Peru, Ecuador and Colombia: CPIC, MCI and Andean Community documentation without border delays."
+        },
+        "h1": "Customs clearance",
+        "lead": "We prepare and manage international trade and transport documentation so your cargo crosses the border without stopping.",
+        "includesTitle": "What's included",
+        "includes": [
+          "Document review before loading",
+          "CPIC and MCI issuance for CAN international transport",
+          "Coordination with customs agencies at origin and destination",
+          "Management at Peru, Ecuador and Colombia border crossings",
+          "Follow-up on cargo release",
+          "Guidance on regimes and requirements per goods type"
+        ],
+        "body": [
+          "The border is where international shipments are won or lost. One badly issued document can cost days of waiting with the unit stopped.",
+          "We operate under Decision 399 of the Andean Community and review your documentation before loading, so the crossing is a formality, not a problem."
+        ],
+        "faq": [
+          {
+            "q": "What documents do I need to ship cargo to Ecuador or Colombia?",
+            "a": "Commercial invoice, packing list and the international transport documents CPIC and MCI, which we issue as an authorized carrier. Depending on the goods, additional permits may apply."
+          },
+          {
+            "q": "Do you handle customs or do I need my own agency?",
+            "a": "We coordinate the full process. If you already work with a customs agency, we integrate with it; if not, we manage everything."
+          }
+        ]
+      },
+      {
+        "slug": "cargo-monitoring",
+        "esSlug": "monitoreo-de-carga",
+        "name": "Cargo monitoring",
+        "card": "Your cargo located and reported throughout the journey, without you having to ask.",
+        "image": "svc-monitoreo",
+        "imageAlt": "Aerial view of a mountain highway traveled by cargo trucks at dusk",
+        "meta": {
+          "title": "24/7 In-Route Cargo Monitoring | Tránsito Nacional",
+          "description": "Permanent GPS cargo monitoring with proactive reports throughout the journey, from origin until unloading at destination."
+        },
+        "h1": "Cargo monitoring",
+        "lead": "From the moment the unit leaves origin until it unloads at destination, you know where your cargo is and how it is doing.",
+        "includesTitle": "What's included",
+        "includes": [
+          "GPS location of the unit during the whole trip",
+          "Proactive reports at route milestones",
+          "Early alerts on detours or delays",
+          "Direct line to the operations team",
+          "Delivery confirmation with evidence",
+          "Trip history available after delivery"
+        ],
+        "body": [
+          "Silence is the most expensive thing in logistics: not knowing where the cargo is forces you to chase your provider. We flip the equation: we report before you ask.",
+          "Every trip has defined milestones and you receive confirmation of each one, down to the final proof of delivery."
+        ],
+        "faq": [
+          {
+            "q": "How do I receive trip reports?",
+            "a": "By WhatsApp or email, as you prefer: updates at each milestone and delivery confirmation with evidence."
+          },
+          {
+            "q": "Does monitoring cost extra?",
+            "a": "No. Cargo tracking is part of the service on every trip we run."
+          }
+        ]
+      }
+    ]
+  },
+  "process": {
+    "title": "How your cargo travels",
+    "lead": "Five stages, one accountable partner. The same method on every trip, national or international.",
+    "steps": [
+      {
+        "n": "1",
+        "title": "Planning",
+        "text": "Together we define the route, the unit, the timeline and the documentation. The rate you approve already contains the full operation."
+      },
+      {
+        "n": "2",
+        "title": "Verification at origin",
+        "text": "We visit the loading point free of charge to confirm the goods are ready, properly packed and match what was declared."
+      },
+      {
+        "n": "3",
+        "title": "Insured loading",
+        "text": "We supervise stowage and lashing, activate the policy and the unit departs with the cargo covered from the first meter."
+      },
+      {
+        "n": "4",
+        "title": "In-route monitoring",
+        "text": "We track the unit throughout the journey and report progress to you. If anything comes up, we act first."
+      },
+      {
+        "n": "5",
+        "title": "Delivery at destination",
+        "text": "We coordinate unloading, confirm delivery with evidence and close the trip with the full history at your disposal."
+      }
+    ]
+  },
+  "verification": {
+    "title": "Before loading, we go verify.",
+    "text": "It is the stage almost nobody offers and the one that prevents the most problems: before dispatching the unit, we visit the point where your cargo sits, free of charge, to confirm it is ready. No surprises at loading, no false freights, no lost days.",
+    "point1": "Free verification visit at the origin point",
+    "point2": "Packing, weights and access confirmed before the trip",
+    "point3": "The unit arrives when the cargo is actually ready"
+  },
+  "coverage": {
+    "eyebrow": "Coverage",
+    "title": "The Andean Community, by road",
+    "text": "We operate throughout Peru and connect the main corridors of Ecuador and Colombia as a carrier authorized by the Andean Community, under the framework of Decision 399.",
+    "legendNational": "National coverage",
+    "legendInternational": "International corridors",
+    "cities": ["LIMA", "AREQUIPA", "TRUJILLO", "PIURA", "CUSCO", "TUMBES", "QUITO", "GUAYAQUIL", "CUENCA", "BOGOTÁ", "MEDELLÍN", "CALI"],
+    "routes": [
+      { "code": "PE-01", "route": "Lima → Arequipa → Cusco" },
+      { "code": "PE-EC", "route": "Lima → Tumbes → Guayaquil → Quito" },
+      { "code": "PE-CO", "route": "Lima → Quito → Cali → Bogotá" }
+    ],
+    "mapLabel": "Map of Peru, Ecuador and Colombia with Tránsito Nacional routes"
+  },
+  "industries": {
+    "title": "Sectors already moving with us",
+    "items": [
+      { "name": "Mining", "text": "Machinery, parts and supplies up to the operation, at altitude and on demanding roads." },
+      { "name": "Construction", "text": "Structures, equipment and materials on site, with coordinated delivery windows." },
+      { "name": "Agribusiness", "text": "Dry and refrigerated cargo from the field to plants, ports and borders." },
+      { "name": "Retail and consumer", "text": "Distribution and replenishment between warehouses and points of sale, on time." },
+      { "name": "Pharmaceutical", "text": "Validated, traceable cold chain for sensitive products." },
+      { "name": "Energy", "text": "Oversized components and critical equipment for projects and facilities." }
+    ]
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "q": "Do you transport cargo between Peru, Ecuador and Colombia?",
+        "a": "Yes. We are a carrier authorized by the Andean Community and we run the corridors between Peru, Ecuador and Colombia under Decision 399, in addition to covering routes throughout Peru."
+      },
+      {
+        "q": "What documents do I need for international road freight?",
+        "a": "CAN international transport requires the International Road Transport Waybill (CPIC) and the International Cargo Manifest (MCI), plus the commercial invoice and packing list. We issue and manage that documentation."
+      },
+      {
+        "q": "Does the cargo travel insured?",
+        "a": "Yes. Every load travels with an active policy from loading at origin until unloading at destination, and you receive proof of coverage before the trip begins."
+      },
+      {
+        "q": "Can you pick up cargo at my plant or warehouse?",
+        "a": "Yes, the service is door to door. Before dispatching the unit we also visit your loading point free of charge to verify the goods are ready and avoid false freights."
+      },
+      {
+        "q": "How long does a shipment from Lima to Bogotá take?",
+        "a": "As a reference, between 5 and 8 days depending on cargo type, route and border crossing. During planning we confirm a committed timeline for your specific shipment."
+      },
+      {
+        "q": "How do I get a quote?",
+        "a": "Message us on WhatsApp at +51 938 192 665 with origin, destination, cargo type, approximate weight and estimated date. We reply the same day with a complete proposal."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Your cargo has a route.",
+    "text": "Tell us what you need to move and we reply today with a complete proposal: unit, timeline, insurance and rate.",
+    "button": "Quote on WhatsApp",
+    "or": "or write to"
+  },
+  "about": {
+    "h1": "Born on the road",
+    "lead": "Tránsito Nacional exists because we know this industry from the inside: decades coordinating cargo, units and borders along the Andean corridor.",
+    "story": [
+      "Before it had a name of its own, our team was already moving cargo along the corridors of Peru and the Andean Community. Years of real operations taught us where time gets lost, where goods get damaged and what separates a delivered freight from a broken promise.",
+      "With that experience we built Tránsito Nacional: an operator that takes full responsibility for the trip, from planning and verification at origin to unloading at destination, with the cargo always insured and monitored.",
+      "Today we connect Peru, Ecuador and Colombia as a carrier authorized by the Andean Community, with a network of units and partners that lets us assign the right equipment for every type of cargo, on every route."
+    ],
+    "valuesTitle": "How we work",
+    "values": [
+      { "title": "Full accountability", "text": "One accountable partner end to end. If something happens on the trip, we answer, not a third party." },
+      { "title": "Verify before promising", "text": "We go to the origin before dispatching the unit. Problems are caught in the yard, not on the highway." },
+      { "title": "Information without chasing", "text": "We report progress before you ask. Silence is not an option while your cargo is on the road." }
+    ],
+    "ctaTitle": "Let's talk about your operation",
+    "ctaText": "If you move cargo regularly, let's build a program that fits you."
+  },
+  "contact": {
+    "h1": "Quote your cargo",
+    "lead": "Fill in your shipment details and receive a proposal the same day. You can also reach us directly on WhatsApp or by email.",
+    "form": {
+      "name": "Name",
+      "namePh": "Your name",
+      "company": "Company",
+      "companyPh": "Your company name (optional)",
+      "origin": "Origin",
+      "originPh": "Pickup city",
+      "destination": "Destination",
+      "destinationPh": "Delivery city",
+      "cargoType": "Cargo type",
+      "cargoTypePh": "E.g.: machinery, pallets, refrigerated",
+      "weight": "Approximate weight",
+      "weightPh": "E.g.: 12 tonnes",
+      "message": "Additional details",
+      "messagePh": "Dates, dimensions, access or anything useful",
+      "submit": "Send quote request on WhatsApp",
+      "hint": "Submitting opens WhatsApp with your request ready to send."
+    },
+    "directTitle": "Direct contact",
+    "phoneLabel": "Call or message us",
+    "emailLabel": "Email",
+    "hoursLabel": "Operations",
+    "hoursValue": "Cargo monitoring around the clock"
+  },
+  "blog": {
+    "title": "Blog",
+    "lead": "Practical guides written from real operations: requirements, costs and best practices for moving cargo in the Andean region.",
+    "readMore": "Read article",
+    "backToBlog": "Back to blog",
+    "publishedOn": "Published on",
+    "relatedCta": "Need to move cargo?"
+  },
+  "footer": {
+    "servicesTitle": "Services",
+    "companyTitle": "Company",
+    "contactTitle": "Contact",
+    "rights": "All rights reserved.",
+    "can": "Carrier authorized by the Andean Community · Decision 399"
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "themeToggle": "Toggle color theme",
+    "langSwitch": "Cambiar a español",
+    "whatsappFab": "Quote on WhatsApp",
+    "breadcrumbHome": "Home"
+  },
+  "notFound": {
+    "title": "Route not found",
+    "text": "The page you are looking for does not exist or changed address.",
+    "back": "Back to home"
+  }
+}

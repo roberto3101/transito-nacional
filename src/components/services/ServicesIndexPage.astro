@@ -1,0 +1,148 @@
+---
+import Base from '../../layouts/Base.astro';
+import Picture from '../Picture.astro';
+import CtaBand from '../home/CtaBand.astro';
+import { useDict, services, p, type Lang } from '../../lib/i18n';
+import { graph, orgNode, websiteNode, breadcrumbNode, SITE } from '../../lib/seo';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = useDict(lang);
+const items = services(lang);
+const base = lang === 'es' ? '/servicios' : '/services';
+const esPath = '/servicios';
+const enPath = '/en/services';
+const here = lang === 'es' ? esPath : enPath;
+
+const jsonLd = graph(
+  orgNode(d),
+  websiteNode(d, lang),
+  breadcrumbNode([
+    { name: d.a11y.breadcrumbHome, url: `${SITE}${lang === 'es' ? '/' : '/en'}` },
+    { name: d.nav.services, url: `${SITE}${here}` },
+  ])
+);
+---
+
+<Base lang={lang} title={d.meta.services.title} description={d.meta.services.description} esPath={esPath} enPath={enPath} jsonLd={jsonLd}>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow reveal">{d.services.eyebrow}</p>
+      <h1 class="h2 reveal" style="--reveal-delay:.06s">{d.services.title}</h1>
+      <p class="lead reveal" style="--reveal-delay:.12s">{d.services.lead}</p>
+
+      <ul class="svc-list">
+        {items.map((s, i) => (
+          <li class="reveal" style={`--reveal-delay:${(i % 2) * 0.08}s`}>
+            <a href={p(lang, `${base}/${s.slug}`)} class="svc-row">
+              <div class="media-card svc-thumb">
+                <Picture name={s.image} alt={s.imageAlt} sizes="(max-width: 700px) 100vw, 380px" />
+              </div>
+              <div class="svc-copy">
+                <h2 class="h3">{s.name}</h2>
+                <p>{s.card}</p>
+                <span class="mono svc-more">{d.services.viewService} →</span>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand lang={lang} />
+</Base>
+
+<style>
+  .h2 {
+    margin-top: 0.9rem;
+  }
+
+  .lead {
+    margin-top: 1.1rem;
+  }
+
+  .svc-list {
+    margin-top: 3.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.2rem;
+  }
+
+  .svc-row {
+    display: flex;
+    gap: 1.6rem;
+    align-items: stretch;
+    border: 1px solid var(--line);
+    border-radius: var(--r-card);
+    overflow: hidden;
+    background: var(--surface);
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease, border-color 0.3s ease;
+    height: 100%;
+  }
+
+  .svc-row:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+    border-color: var(--line-strong);
+  }
+
+  .svc-thumb {
+    width: 38%;
+    flex-shrink: 0;
+    border-radius: 0;
+  }
+
+  .svc-thumb :global(img) {
+    height: 100%;
+    min-height: 170px;
+  }
+
+  .svc-copy {
+    padding: 1.4rem 1.4rem 1.4rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .svc-copy p {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .svc-more {
+    color: var(--brand-text);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  @media (max-width: 980px) {
+    .svc-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .svc-row {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .svc-thumb {
+      width: 100%;
+    }
+
+    .svc-thumb :global(img) {
+      min-height: 190px;
+    }
+
+    .svc-copy {
+      padding: 1.3rem;
+    }
+  }
+</style>

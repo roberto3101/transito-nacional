@@ -1,0 +1,291 @@
+---
+import Logo from './Logo.astro';
+import { useDict, p, whatsappHref, type Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+  /** URL de esta misma página en el otro idioma */
+  altHref: string;
+}
+const { lang, altHref } = Astro.props;
+const d = useDict(lang);
+const altLabel = lang === 'es' ? 'EN' : 'ES';
+
+const links = [
+  { href: p(lang, lang === 'es' ? '/servicios' : '/services'), label: d.nav.services },
+  { href: p(lang, lang === 'es' ? '/nosotros' : '/about'), label: d.nav.about },
+  ...(lang === 'es' ? [{ href: '/blog', label: d.nav.blog }] : []),
+  { href: p(lang, lang === 'es' ? '/contacto' : '/contact'), label: d.nav.contact },
+];
+---
+
+<!-- Centinela: cuando sale del viewport, el header gana fondo (sin listeners de scroll) -->
+<div id="top-sentinel" aria-hidden="true"></div>
+
+<header id="site-header">
+  <div class="container header-row">
+    <a href={p(lang, '/')} class="brand-link" aria-label={d.brand.name}>
+      <Logo />
+    </a>
+
+    <nav aria-label="principal" class="desktop-nav">
+      <ul>
+        {links.map((l) => (
+          <li><a href={l.href}>{l.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href={altHref} class="lang-switch mono" aria-label={d.a11y.langSwitch}>{altLabel}</a>
+
+      <button id="theme-toggle" type="button" aria-label={d.a11y.themeToggle}>
+        <!-- Iconos: Phosphor Icons (MIT) -->
+        <svg class="icon-sun" viewBox="0 0 256 256" width="19" height="19" fill="currentColor" aria-hidden="true"><path d="M120 40V16a8 8 0 0 1 16 0v24a8 8 0 0 1-16 0Zm72 88a64 64 0 1 1-64-64 64.07 64.07 0 0 1 64 64Zm-16 0a48 48 0 1 0-48 48 48.05 48.05 0 0 0 48-48ZM58.34 69.66a8 8 0 0 0 11.32-11.32l-16-16a8 8 0 0 0-11.32 11.32Zm0 116.68-16 16a8 8 0 0 0 11.32 11.32l16-16a8 8 0 0 0-11.32-11.32ZM192 72a8 8 0 0 0 5.66-2.34l16-16a8 8 0 0 0-11.32-11.32l-16 16A8 8 0 0 0 192 72Zm5.66 114.34a8 8 0 0 0-11.32 11.32l16 16a8 8 0 0 0 11.32-11.32ZM48 128a8 8 0 0 0-8-8H16a8 8 0 0 0 0 16h24a8 8 0 0 0 8-8Zm80 80a8 8 0 0 0-8 8v24a8 8 0 0 0 16 0v-24a8 8 0 0 0-8-8Zm112-88h-24a8 8 0 0 0 0 16h24a8 8 0 0 0 0-16Z"/></svg>
+        <svg class="icon-moon" viewBox="0 0 256 256" width="19" height="19" fill="currentColor" aria-hidden="true"><path d="M233.54 142.23a8 8 0 0 0-8-2 88.08 88.08 0 0 1-109.8-109.8 8 8 0 0 0-10-10 104.84 104.84 0 0 0-52.91 37A104 104 0 0 0 136 224a103.09 103.09 0 0 0 62.52-20.88 104.84 104.84 0 0 0 37-52.91 8 8 0 0 0-1.98-7.98Zm-44.64 48.11A88 88 0 0 1 65.66 67.11a89 89 0 0 1 31.4-26A106 106 0 0 0 96 56a104.11 104.11 0 0 0 104 104 106 106 0 0 0 14.92-1.06 89 89 0 0 1-26.02 31.4Z"/></svg>
+      </button>
+
+      <a href={whatsappHref(lang)} class="btn btn-primary header-cta" target="_blank" rel="noopener">
+        {d.nav.quote}
+      </a>
+
+      <button id="menu-toggle" type="button" aria-label={d.nav.menuOpen} aria-expanded="false" aria-controls="mobile-nav">
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobile-nav" aria-label="principal móvil">
+    <ul class="container">
+      {links.map((l) => (
+        <li><a href={l.href}>{l.label}</a></li>
+      ))}
+      <li>
+        <a href={whatsappHref(lang)} class="btn btn-primary" target="_blank" rel="noopener">{d.nav.quote}</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  #top-sentinel {
+    position: absolute;
+    top: 0;
+    height: 24px;
+    width: 1px;
+  }
+
+  #site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+  }
+
+  #site-header.scrolled {
+    background: var(--header-bg);
+    backdrop-filter: blur(14px);
+    border-bottom-color: var(--line);
+  }
+
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    height: 74px;
+  }
+
+  .desktop-nav ul {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .desktop-nav a {
+    font-weight: 500;
+    font-size: 0.98rem;
+    position: relative;
+    padding-block: 0.3rem;
+  }
+
+  .desktop-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--brand);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s var(--ease-out);
+  }
+
+  .desktop-nav a:hover::after {
+    transform: scaleX(1);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .lang-switch {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    padding: 0.45rem 0.55rem;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-control);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .lang-switch:hover {
+    border-color: var(--brand);
+    color: var(--brand);
+  }
+
+  #theme-toggle {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--r-control);
+    border: 1px solid var(--line-strong);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  #theme-toggle:hover {
+    border-color: var(--brand);
+    color: var(--brand);
+  }
+
+  :global([data-theme='light']) .icon-sun {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .icon-moon {
+    display: none;
+  }
+
+  .header-cta {
+    padding: 0.7rem 1.15rem;
+    font-size: 0.92rem;
+  }
+
+  /* ---- móvil ---- */
+  #menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-control);
+    padding: 0 10px;
+  }
+
+  #menu-toggle .bar {
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.25s var(--ease-out), opacity 0.2s ease;
+  }
+
+  #mobile-nav {
+    display: none;
+    border-top: 1px solid var(--line);
+    background: var(--bg);
+  }
+
+  #mobile-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-block: 1rem 1.4rem;
+  }
+
+  #mobile-nav a:not(.btn) {
+    display: block;
+    padding: 0.85rem 0.25rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  #mobile-nav .btn {
+    margin-top: 0.9rem;
+    width: 100%;
+  }
+
+  :global(#site-header[data-open]) #mobile-nav {
+    display: block;
+  }
+
+  :global(#site-header[data-open]) #menu-toggle .bar:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+
+  :global(#site-header[data-open]) #menu-toggle .bar:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
+  @media (max-width: 960px) {
+    .desktop-nav,
+    .header-cta {
+      display: none;
+    }
+
+    #menu-toggle {
+      display: flex;
+    }
+
+    #site-header {
+      background: var(--header-bg);
+      backdrop-filter: blur(14px);
+    }
+  }
+</style>
+
+<script>
+  // Clicks por delegación en document: sobreviven a las View Transitions.
+  document.addEventListener('click', (ev) => {
+    const t = ev.target as HTMLElement;
+
+    if (t.closest('#theme-toggle')) {
+      const root = document.documentElement;
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try {
+        localStorage.setItem('tn-theme', next);
+      } catch {}
+      return;
+    }
+
+    const menuBtn = t.closest('#menu-toggle');
+    if (menuBtn) {
+      const header = document.getElementById('site-header');
+      const open = header?.toggleAttribute('data-open');
+      menuBtn.setAttribute('aria-expanded', String(!!open));
+    }
+  });
+
+  // Fondo del header al hacer scroll, sin listeners de scroll:
+  // observamos un centinela en el tope de la página (re-inicio por navegación).
+  import { onReady } from '../lib/ready';
+
+  onReady(() => {
+    const header = document.getElementById('site-header');
+    const sentinel = document.getElementById('top-sentinel');
+    if (header && sentinel && !sentinel.dataset.bound) {
+      sentinel.dataset.bound = '1';
+      new IntersectionObserver(([entry]) => {
+        header.classList.toggle('scrolled', !entry.isIntersecting);
+      }).observe(sentinel);
+    }
+  });
+</script>

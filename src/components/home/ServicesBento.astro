@@ -1,0 +1,205 @@
+---
+import Picture from '../Picture.astro';
+import { useDict, services, p, type Lang } from '../../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = useDict(lang);
+const items = services(lang);
+const base = lang === 'es' ? '/servicios' : '/services';
+
+/** Composición del bento: 8 servicios, 8 celdas. 5 con imagen, 3 tipográficas. */
+const layout: Record<string, { area: string; media: boolean }> = {
+  [items[0].slug]: { area: 'a', media: true },  // carga pesada (protagonista)
+  [items[2].slug]: { area: 'b', media: true },  // refrigerada
+  [items[3].slug]: { area: 'c', media: false }, // logística integral
+  [items[1].slug]: { area: 'd', media: true },  // sobredimensionada
+  [items[4].slug]: { area: 'e', media: false }, // almacenaje
+  [items[6].slug]: { area: 'f', media: true },  // aduanas
+  [items[5].slug]: { area: 'g', media: false }, // seguro
+  [items[7].slug]: { area: 'h', media: true },  // monitoreo
+};
+---
+
+<section class="section services-home">
+  <div class="container">
+    <p class="eyebrow reveal-line">{d.services.eyebrow}</p>
+    <h2 class="h2 reveal-line" style="--reveal-delay:.08s">{d.services.title}</h2>
+    <p class="lead reveal" style="--reveal-delay:.16s">{d.services.lead}</p>
+
+    <div class="bento">
+      {items.map((s, i) => {
+        const cfg = layout[s.slug];
+        return (
+          <a
+            href={p(lang, `${base}/${s.slug}`)}
+            class:list={['cell', cfg.media ? 'cell-media reveal-wipe' : 'cell-text reveal']}
+            style={`grid-area:${cfg.area}; --reveal-delay:${(i % 4) * 0.07}s`}
+            data-tilt={cfg.media ? '' : undefined}
+          >
+            {cfg.media && (
+              <div class="cell-bg">
+                <Picture
+                  name={s.image}
+                  alt={s.imageAlt}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 40vw"
+                />
+              </div>
+            )}
+            <div class="cell-body">
+              <h3 class="h3">{s.name}</h3>
+              <p>{s.card}</p>
+              <span class="cell-more mono">{d.services.viewService} →</span>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .h2 {
+    margin-top: 0.9rem;
+    max-width: 18ch;
+  }
+
+  .lead {
+    margin-top: 1.1rem;
+  }
+
+  .bento {
+    margin-top: 3.2rem;
+    display: grid;
+    gap: 1.1rem;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas:
+      'a a a a a a a b b b b b'
+      'a a a a a a a c c c c c'
+      'd d d d e e e e f f f f'
+      'g g g g g g h h h h h h';
+    grid-auto-rows: 250px;
+  }
+
+  .cell {
+    position: relative;
+    border-radius: var(--r-card);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    transition: transform 0.35s var(--ease-out), box-shadow 0.35s ease;
+  }
+
+  .cell:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Celdas con imagen: texto sobre degradado, contraste garantizado */
+  .cell-media .cell-bg,
+  .cell-media .cell-bg :global(picture),
+  .cell-media .cell-bg :global(img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* La foto duerme en sepia suave y despierta a color al pasar el cursor */
+  .cell-media .cell-bg :global(img) {
+    transition: transform 0.7s var(--ease-out), filter 0.7s ease;
+    filter: saturate(0.72);
+  }
+
+  .cell-media:hover .cell-bg :global(img) {
+    transform: scale(1.05);
+    filter: saturate(1.05);
+  }
+
+  .cell-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(195deg, rgba(19, 12, 5, 0.02) 30%, rgba(19, 12, 5, 0.78) 100%);
+  }
+
+  .cell-media .cell-body {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+  }
+
+  .cell-media p {
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .cell-media .cell-more {
+    color: #ffb673;
+  }
+
+  /* Celdas tipográficas */
+  .cell-text {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+  }
+
+  .cell-text p {
+    color: var(--muted);
+  }
+
+  .cell-text .cell-more {
+    color: var(--brand-text);
+  }
+
+  .cell-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .cell-body p {
+    font-size: 0.94rem;
+    line-height: 1.5;
+    max-width: 42ch;
+  }
+
+  .cell-more {
+    margin-top: 0.4rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: transform 0.25s var(--ease-out);
+  }
+
+  .cell:hover .cell-more {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 1100px) {
+    .bento {
+      grid-template-areas:
+        'a a a a a a a a a a a a'
+        'b b b b b b c c c c c c'
+        'd d d d d d e e e e e e'
+        'f f f f f f g g g g g g'
+        'h h h h h h h h h h h h';
+      grid-auto-rows: 250px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .bento {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cell-media {
+      min-height: 240px;
+    }
+  }
+</style>
