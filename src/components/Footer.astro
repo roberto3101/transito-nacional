@@ -13,7 +13,7 @@ const year = new Date().getFullYear();
 
 <footer>
   <!-- Cierre tipográfico: la marca como paisaje -->
-  <p class="footer-brandline display" aria-hidden="true">Tránsito Nacional</p>
+  <p class="footer-brandline display" aria-hidden="true" data-brandline>Tránsito Nacional</p>
 
   <div class="container footer-grid">
     <div class="footer-brand">
@@ -63,17 +63,33 @@ const year = new Date().getFullYear();
     overflow: hidden;
   }
 
+  /* Las letras se sombrean con un degradado que sigue al cursor:
+     la marca se enciende al pasar por encima, como faros sobre un rótulo. */
   .footer-brandline {
     font-size: clamp(3rem, 10.5vw, 10rem);
     line-height: 0.9;
     white-space: nowrap;
     text-align: center;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--line-strong);
     user-select: none;
     padding-top: 3.2rem;
     margin-bottom: -0.6rem;
-    opacity: 0.85;
+    -webkit-text-stroke: 1px var(--line-strong);
+    background-image: radial-gradient(
+      42rem circle at var(--bx, 50%) var(--by, 50%),
+      var(--brand) 0%,
+      color-mix(in srgb, var(--brand) 45%, transparent) 22%,
+      transparent 48%
+    );
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: opacity 0.4s ease;
+    opacity: 0.9;
+  }
+
+  .footer-brandline:hover {
+    opacity: 1;
   }
 
   .footer-grid {

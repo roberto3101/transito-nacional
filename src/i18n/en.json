@@ -19,7 +19,7 @@
     },
     "services": {
       "title": "Freight Transport and Integrated Logistics Services | Tránsito Nacional",
-      "description": "Heavy, oversized and refrigerated cargo, warehousing, cargo insurance, customs and in-route monitoring. Door-to-door service in Peru, Ecuador and Colombia."
+      "description": "Heavy and refrigerated cargo, integrated logistics, warehousing, cargo insurance, customs and in-route monitoring. Door-to-door service in Peru, Ecuador and Colombia."
     },
     "about": {
       "title": "About Us: Logistics Network in the Andean Community | Tránsito Nacional",
@@ -58,10 +58,22 @@
   },
   "stats": {
     "items": [
-      { "value": "3", "label": "countries connected by road" },
-      { "value": "24/7", "label": "in-route cargo monitoring" },
-      { "value": "100%", "label": "of cargo travels insured" },
-      { "value": "+20", "label": "years of industry experience" }
+      {
+        "value": "3",
+        "label": "countries connected by road"
+      },
+      {
+        "value": "24/7",
+        "label": "in-route cargo monitoring"
+      },
+      {
+        "value": "100%",
+        "label": "of cargo travels insured"
+      },
+      {
+        "value": "+20",
+        "label": "years of industry experience"
+      }
     ]
   },
   "services": {
@@ -85,7 +97,7 @@
         "lead": "We move machinery, steel structures, coils, containers and industrial volumes by road, within Peru and across to Ecuador and Colombia.",
         "includesTitle": "What's included",
         "includes": [
-          "The right unit for the load: lowbed, flatbed, box truck or tanker",
+          "The right unit for the load: lowbed, flatbed or box truck",
           "Route planning with weight and height restrictions",
           "Cargo verification at origin before dispatching the unit",
           "Insurance policy from loading to unloading",
@@ -94,53 +106,16 @@
         ],
         "body": [
           "Every heavy load has its own physics: center of gravity, lifting points, lashing tolerances. Before assigning the unit we study the real weight, dimensions and route, and only then confirm the equipment and the rate.",
-          "During the trip, the unit reports its position and you receive updates without having to ask. If anything changes on the road, you hear it from us first."
+          "During the trip, the unit reports its position and we keep you informed at every milestone. If anything changes on the road, you hear it from us first."
         ],
         "faq": [
           {
             "q": "What kinds of units do you run for heavy cargo?",
-            "a": "Lowbeds, cradle beds, flatbeds, box trucks and tankers, depending on the weight, dimensions and route of your load."
+            "a": "Lowbeds, cradle beds, flatbeds and box trucks, depending on the weight, dimensions and route of your load."
           },
           {
             "q": "Do you cover mining routes or hard-to-reach areas?",
             "a": "Yes. We assess the route during planning and assign units and drivers experienced in high altitude and gravel roads."
-          }
-        ]
-      },
-      {
-        "slug": "oversized-cargo",
-        "esSlug": "carga-sobredimensionada",
-        "name": "Oversized cargo",
-        "card": "Pieces beyond standard dimensions, with route studies, permits and escort vehicles.",
-        "image": "svc-sobredimensionada",
-        "imageAlt": "Oversized cargo secured on a multi-axle modular trailer",
-        "meta": {
-          "title": "Oversized Cargo Transport | Tránsito Nacional",
-          "description": "Oversized cargo transport in Peru and the Andean Community: route study, permits, escort and insurance included. Quote your special project."
-        },
-        "h1": "Oversized cargo",
-        "lead": "Pieces that do not fit in a container: tanks, hoppers, structures, transformers and plant components that demand transport engineering.",
-        "includesTitle": "What's included",
-        "includes": [
-          "Route study: bridges, curves, slopes and overhead cabling",
-          "Special permit management with the authorities",
-          "Escort vehicles and signaling where required",
-          "Certified lifting and lashing plan",
-          "Cargo insurance matching the declared value",
-          "Delivery window coordination with origin and destination"
-        ],
-        "body": [
-          "Oversized freight leaves no room for improvisation: a late permit or a mismeasured bridge stops the whole project. Our planning solves the paperwork and the route before the piece leaves the plant.",
-          "You get a clear schedule with verifiable milestones, and we meet it."
-        ],
-        "faq": [
-          {
-            "q": "What counts as oversized cargo?",
-            "a": "Any load exceeding the legal limits to circulate without a special permit: generally more than 2.6 m wide, 4.3 m high or 48 tonnes under Peruvian regulations."
-          },
-          {
-            "q": "How long do permits take?",
-            "a": "It depends on the route and the regions it crosses. During planning we give you a realistic timeline before committing dates."
           }
         ]
       },
@@ -156,7 +131,7 @@
           "description": "Refrigerated transport in Peru, Ecuador and Colombia with controlled, logged temperature for food, agribusiness and pharma. Get a quote today."
         },
         "h1": "Refrigerated cargo",
-        "lead": "Fresh and frozen food, agro exports and pharmaceutical products with temperature controlled end to end.",
+        "lead": "Seafood products at low temperatures, fresh and frozen food, agro exports and pharmaceutical products with temperature controlled end to end.",
         "includesTitle": "What's included",
         "includes": [
           "Refrigerated units with configurable temperature ranges",
@@ -167,8 +142,8 @@
           "Border priority for perishable products"
         ],
         "body": [
-          "In cold chain, the enemy is time out of range. We configure the unit for your product, log the temperature during the whole trip and hand you the history together with the cargo.",
-          "We work with agro exporters and distributors who cannot afford a rejection at destination: every refrigerated trip is planned with margin and with a plan B."
+          "In cold chain, the enemy is time out of range. We configure the unit for your product and log the temperature during the whole trip.",
+          "We work with seafood exporters, agro exporters and distributors who cannot afford a rejection at destination: every refrigerated trip is planned with margin."
         ],
         "faq": [
           {
@@ -177,7 +152,7 @@
           },
           {
             "q": "Can I see the temperature during the trip?",
-            "a": "Yes. We share the logs during transit and the full history upon delivery."
+            "a": "Yes. We share the temperature logs during transit."
           }
         ]
       },
@@ -198,7 +173,7 @@
         "includes": [
           "Service planning tailored to your operation",
           "National and international road transport",
-          "Warehousing and cross-docking to match your flow",
+          "Warehousing to match your operation flow",
           "End-to-end cargo insurance",
           "Customs management at CAN borders",
           "One point of contact and one invoice"
@@ -227,7 +202,7 @@
         "imageAlt": "Logistics warehouse interior with loaded racks and a forklift",
         "meta": {
           "title": "Warehousing and Cargo Consolidation | Tránsito Nacional",
-          "description": "Secure warehousing at strategic points: consolidation, cross-docking and distribution integrated with your transport. Quote space for your goods."
+          "description": "Secure warehousing at strategic points: consolidation and distribution integrated with your transport. Quote space for your goods."
         },
         "h1": "Warehousing",
         "lead": "Consolidate, store and distribute from strategic points, with transport already integrated.",
@@ -236,7 +211,6 @@
           "Reception with package count and condition control",
           "Covered, guarded storage",
           "Cargo consolidation and deconsolidation",
-          "Cross-docking for distribution flows",
           "Reported, traceable inventory",
           "Dispatch coordinated with our transport network"
         ],
@@ -259,32 +233,32 @@
         "slug": "cargo-insurance",
         "esSlug": "seguro-de-carga",
         "name": "Cargo insurance",
-        "card": "Your goods covered from loading until unloading at destination.",
+        "card": "We arrange the policy covering your goods. The premium is quoted separately from the freight.",
         "image": "svc-verificacion",
         "imageAlt": "Inspector in a hard hat checking cargo lashing on a flatbed",
         "meta": {
           "title": "Door-to-Door Cargo Insurance | Tránsito Nacional",
-          "description": "Cargo insurance from the loading point until unloading at destination, national and international. Ship with peace of mind: your goods are covered."
+          "description": "End-to-end cargo insurance for national and international transport. We arrange the policy; the premium is quoted separately and paid by the client."
         },
         "h1": "Cargo insurance",
-        "lead": "Every shipment travels with an active policy from the moment cargo is loaded until it is unloaded at destination.",
+        "lead": "We arrange the policy covering your goods from loading until unloading at destination. The premium is quoted separately from the freight and is paid by the client.",
         "includesTitle": "What's included",
         "includes": [
           "End-to-end coverage: loading, transit and unloading",
-          "Policies matching the declared value of the goods",
+          "Policy matching the declared value of your goods",
+          "Premium quoted separately from freight, paid by the client",
           "National and international coverage across the CAN",
           "Guidance to declare value correctly",
-          "Full claim management, should one occur",
-          "Proof of coverage before the trip begins"
+          "Full claim management, should one occur"
         ],
         "body": [
-          "A cheap freight rate without coverage becomes expensive the day something goes wrong. That is why insurance is not an add-on in our proposal: it is part of the service.",
-          "Before each trip you receive proof of coverage with your goods properly declared. If anything happened, we manage the claim ourselves."
+          "A cheap freight rate without coverage becomes expensive the day something goes wrong. That is why we arrange the policy alongside your service and hand you the certificate before the unit departs.",
+          "The insurance premium is not included in the freight rate: it is quoted separately based on the declared value and type of goods, and it is covered by the client. That way you know exactly what you pay for transport and what for coverage."
         ],
         "faq": [
           {
-            "q": "Is insurance included in the rate?",
-            "a": "Our proposal always includes cargo coverage. The cost depends on the declared value and the type of goods."
+            "q": "Is insurance included in the freight rate?",
+            "a": "No. The policy is quoted separately and is a client cost. The premium depends on the declared value and type of goods, and we detail it alongside the transport proposal."
           },
           {
             "q": "What happens if there is a claim?",
@@ -333,12 +307,12 @@
         "slug": "cargo-monitoring",
         "esSlug": "monitoreo-de-carga",
         "name": "Cargo monitoring",
-        "card": "Your cargo located and reported throughout the journey, without you having to ask.",
+        "card": "Your cargo located and reported at every milestone of the journey.",
         "image": "svc-monitoreo",
         "imageAlt": "Aerial view of a mountain highway traveled by cargo trucks at dusk",
         "meta": {
           "title": "24/7 In-Route Cargo Monitoring | Tránsito Nacional",
-          "description": "Permanent GPS cargo monitoring with proactive reports throughout the journey, from origin until unloading at destination."
+          "description": "Permanent GPS cargo monitoring with reports at every milestone, from origin until unloading at destination."
         },
         "h1": "Cargo monitoring",
         "lead": "From the moment the unit leaves origin until it unloads at destination, you know where your cargo is and how it is doing.",
@@ -348,11 +322,10 @@
           "Proactive reports at route milestones",
           "Early alerts on detours or delays",
           "Direct line to the operations team",
-          "Delivery confirmation with evidence",
-          "Trip history available after delivery"
+          "Delivery confirmation with evidence"
         ],
         "body": [
-          "Silence is the most expensive thing in logistics: not knowing where the cargo is forces you to chase your provider. We flip the equation: we report before you ask.",
+          "Silence is the most expensive thing in logistics: not knowing where the cargo is forces you to chase your provider. We flip the equation and report at every milestone.",
           "Every trip has defined milestones and you receive confirmation of each one, down to the final proof of delivery."
         ],
         "faq": [
@@ -395,7 +368,7 @@
       {
         "n": "5",
         "title": "Delivery at destination",
-        "text": "We coordinate unloading, confirm delivery with evidence and close the trip with the full history at your disposal."
+        "text": "We coordinate unloading and confirm delivery with evidence at the destination point."
       }
     ]
   },
@@ -412,23 +385,63 @@
     "text": "We operate throughout Peru and connect the main corridors of Ecuador and Colombia as a carrier authorized by the Andean Community, under the framework of Decision 399.",
     "legendNational": "National coverage",
     "legendInternational": "International corridors",
-    "cities": ["LIMA", "AREQUIPA", "TRUJILLO", "PIURA", "CUSCO", "TUMBES", "QUITO", "GUAYAQUIL", "CUENCA", "BOGOTÁ", "MEDELLÍN", "CALI"],
+    "cities": [
+      "LIMA",
+      "AREQUIPA",
+      "TRUJILLO",
+      "PIURA",
+      "CUSCO",
+      "TUMBES",
+      "QUITO",
+      "GUAYAQUIL",
+      "CUENCA",
+      "BOGOTÁ",
+      "MEDELLÍN",
+      "CALI"
+    ],
     "routes": [
-      { "code": "PE-01", "route": "Lima → Arequipa → Cusco" },
-      { "code": "PE-EC", "route": "Lima → Tumbes → Guayaquil → Quito" },
-      { "code": "PE-CO", "route": "Lima → Quito → Cali → Bogotá" }
+      {
+        "code": "PE-01",
+        "route": "Lima → Arequipa → Cusco"
+      },
+      {
+        "code": "PE-EC",
+        "route": "Lima → Tumbes → Guayaquil → Quito"
+      },
+      {
+        "code": "PE-CO",
+        "route": "Lima → Quito → Cali → Bogotá"
+      }
     ],
     "mapLabel": "Map of Peru, Ecuador and Colombia with Tránsito Nacional routes"
   },
   "industries": {
     "title": "Sectors already moving with us",
     "items": [
-      { "name": "Mining", "text": "Machinery, parts and supplies up to the operation, at altitude and on demanding roads." },
-      { "name": "Construction", "text": "Structures, equipment and materials on site, with coordinated delivery windows." },
-      { "name": "Agribusiness", "text": "Dry and refrigerated cargo from the field to plants, ports and borders." },
-      { "name": "Retail and consumer", "text": "Distribution and replenishment between warehouses and points of sale, on time." },
-      { "name": "Pharmaceutical", "text": "Validated, traceable cold chain for sensitive products." },
-      { "name": "Energy", "text": "Oversized components and critical equipment for projects and facilities." }
+      {
+        "name": "Mining",
+        "text": "Machinery, parts and supplies up to the operation, at altitude and on demanding roads."
+      },
+      {
+        "name": "Construction",
+        "text": "Structures, equipment and materials on site, with coordinated delivery windows."
+      },
+      {
+        "name": "Agribusiness",
+        "text": "Dry and refrigerated cargo from the field to plants, ports and borders."
+      },
+      {
+        "name": "Retail and consumer",
+        "text": "Distribution and replenishment between warehouses and points of sale, on time."
+      },
+      {
+        "name": "Pharmaceutical",
+        "text": "Validated, traceable cold chain for sensitive products."
+      },
+      {
+        "name": "Energy",
+        "text": "Critical equipment and plant components for projects and facilities."
+      }
     ]
   },
   "faq": {
@@ -444,7 +457,7 @@
       },
       {
         "q": "Does the cargo travel insured?",
-        "a": "Yes. Every load travels with an active policy from loading at origin until unloading at destination, and you receive proof of coverage before the trip begins."
+        "a": "Yes. Every load travels with an active policy from loading at origin until unloading at destination. The insurance premium is quoted separately from the freight and is a client cost."
       },
       {
         "q": "Can you pick up cargo at my plant or warehouse?",
@@ -476,9 +489,18 @@
     ],
     "valuesTitle": "How we work",
     "values": [
-      { "title": "Full accountability", "text": "One accountable partner end to end. If something happens on the trip, we answer, not a third party." },
-      { "title": "Verify before promising", "text": "We go to the origin before dispatching the unit. Problems are caught in the yard, not on the highway." },
-      { "title": "Information without chasing", "text": "We report progress before you ask. Silence is not an option while your cargo is on the road." }
+      {
+        "title": "Full accountability",
+        "text": "One accountable partner end to end. If something happens on the trip, we answer, not a third party."
+      },
+      {
+        "title": "Verify before promising",
+        "text": "We go to the origin before dispatching the unit. Problems are caught in the yard, not on the highway."
+      },
+      {
+        "title": "Information at every milestone",
+        "text": "We report trip progress at every milestone of the route. Silence is not an option while your cargo is on the road."
+      }
     ],
     "ctaTitle": "Let's talk about your operation",
     "ctaText": "If you move cargo regularly, let's build a program that fits you."

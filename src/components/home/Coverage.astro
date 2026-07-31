@@ -162,13 +162,16 @@ const countries = [
   }
 
   /* Marco tipo instrumento de navegación */
+  /* Panel de instrumento: es una pantalla, por eso permanece oscuro en ambos
+     temas, pero con luz cálida propia para que dialogue con el resto. */
   .map-frame {
     position: relative;
     margin-top: 3rem;
     padding: 1.2rem;
-    border: 1px solid var(--line-strong);
+    border: 1px solid color-mix(in srgb, var(--brand) 30%, transparent);
     border-radius: var(--r-card);
-    background: #100e0b;
+    background: radial-gradient(120% 100% at 50% 120%, #2a1a09 0%, #171009 55%);
+    box-shadow: var(--shadow-card);
   }
 
   .fr {

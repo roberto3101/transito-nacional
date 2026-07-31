@@ -10,16 +10,15 @@ const d = useDict(lang);
 const items = services(lang);
 const base = lang === 'es' ? '/servicios' : '/services';
 
-/** Composición del bento: 8 servicios, 8 celdas. 5 con imagen, 3 tipográficas. */
+/** Composición del bento: 7 servicios, 7 celdas. 4 con imagen, 3 tipográficas. */
 const layout: Record<string, { area: string; media: boolean }> = {
   [items[0].slug]: { area: 'a', media: true },  // carga pesada (protagonista)
-  [items[2].slug]: { area: 'b', media: true },  // refrigerada
-  [items[3].slug]: { area: 'c', media: false }, // logística integral
-  [items[1].slug]: { area: 'd', media: true },  // sobredimensionada
-  [items[4].slug]: { area: 'e', media: false }, // almacenaje
-  [items[6].slug]: { area: 'f', media: true },  // aduanas
-  [items[5].slug]: { area: 'g', media: false }, // seguro
-  [items[7].slug]: { area: 'h', media: true },  // monitoreo
+  [items[1].slug]: { area: 'b', media: true },  // refrigerada
+  [items[2].slug]: { area: 'c', media: false }, // logística integral
+  [items[3].slug]: { area: 'd', media: false }, // almacenaje
+  [items[4].slug]: { area: 'e', media: false }, // seguro de carga
+  [items[5].slug]: { area: 'f', media: true },  // trámites aduaneros
+  [items[6].slug]: { area: 'g', media: true },  // monitoreo (banda ancha)
 };
 ---
 
@@ -79,7 +78,7 @@ const layout: Record<string, { area: string; media: boolean }> = {
       'a a a a a a a b b b b b'
       'a a a a a a a c c c c c'
       'd d d d e e e e f f f f'
-      'g g g g g g h h h h h h';
+      'g g g g g g g g g g g g';
     grid-auto-rows: 250px;
   }
 
@@ -186,8 +185,8 @@ const layout: Record<string, { area: string; media: boolean }> = {
         'a a a a a a a a a a a a'
         'b b b b b b c c c c c c'
         'd d d d d d e e e e e e'
-        'f f f f f f g g g g g g'
-        'h h h h h h h h h h h h';
+        'f f f f f f f f f f f f'
+        'g g g g g g g g g g g g';
       grid-auto-rows: 250px;
     }
   }

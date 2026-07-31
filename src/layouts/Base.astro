@@ -279,6 +279,20 @@ const altHref = lang === 'es' ? (hasEn ? enPath : '/en') : esPath || '/';
           });
         }
 
+        /* ---- La marca del footer se enciende bajo el cursor ---- */
+        document.querySelectorAll<HTMLElement>('[data-brandline]:not([data-lit])').forEach((line) => {
+          line.dataset.lit = '1';
+          let raf = 0;
+          line.addEventListener('pointermove', (ev) => {
+            cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => {
+              const r = line.getBoundingClientRect();
+              line.style.setProperty('--bx', `${((ev.clientX - r.left) / r.width) * 100}%`);
+              line.style.setProperty('--by', `${((ev.clientY - r.top) / r.height) * 100}%`);
+            });
+          });
+        });
+
         /* ---- El faro: la luz sigue al cursor dentro del acto nocturno ---- */
         document.querySelectorAll<HTMLElement>('.act-night:not([data-light])').forEach((night) => {
           night.dataset.light = '1';

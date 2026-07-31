@@ -19,7 +19,7 @@
     },
     "services": {
       "title": "Servicios de Transporte de Carga y Logística Integral | Tránsito Nacional",
-      "description": "Carga pesada, sobredimensionada y refrigerada, almacenaje, seguro de carga, aduanas y monitoreo en ruta. Servicio puerta a puerta en Perú, Ecuador y Colombia."
+      "description": "Carga pesada y refrigerada, logística integral, almacenaje, seguro de carga, aduanas y monitoreo en ruta. Servicio puerta a puerta en Perú, Ecuador y Colombia."
     },
     "about": {
       "title": "Nosotros: Red Logística en la Comunidad Andina | Tránsito Nacional",
@@ -58,10 +58,22 @@
   },
   "stats": {
     "items": [
-      { "value": "3", "label": "países conectados por carretera" },
-      { "value": "24/7", "label": "monitoreo de tu carga en ruta" },
-      { "value": "100%", "label": "de la carga viaja asegurada" },
-      { "value": "+20", "label": "años de experiencia en el rubro" }
+      {
+        "value": "3",
+        "label": "países conectados por carretera"
+      },
+      {
+        "value": "24/7",
+        "label": "monitoreo de tu carga en ruta"
+      },
+      {
+        "value": "100%",
+        "label": "de la carga viaja asegurada"
+      },
+      {
+        "value": "+20",
+        "label": "años de experiencia en el rubro"
+      }
     ]
   },
   "services": {
@@ -85,7 +97,7 @@
         "lead": "Movemos maquinaria, estructuras metálicas, bobinas, contenedores y volúmenes industriales por carretera, dentro del Perú y hacia Ecuador y Colombia.",
         "includesTitle": "Qué incluye",
         "includes": [
-          "Unidad adecuada al tipo de carga: cama baja, plataforma, furgón o bombona",
+          "Unidad adecuada al tipo de carga: cama baja, plataforma o furgón",
           "Planeamiento de ruta con restricciones de peso y altura",
           "Verificación de la carga en origen antes de enviar la unidad",
           "Póliza de seguro desde la carga hasta la descarga",
@@ -94,53 +106,16 @@
         ],
         "body": [
           "Cada carga pesada tiene su propia física: centro de gravedad, puntos de izaje, tolerancias de amarre. Antes de asignar la unidad estudiamos el peso real, las dimensiones y la ruta, y recién entonces confirmamos el equipo y la tarifa.",
-          "Durante el viaje, la unidad reporta su posición y tú recibes avances sin tener que preguntar. Si algo cambia en la ruta, lo sabes primero por nosotros."
+          "Durante el viaje, la unidad reporta su posición y te mantenemos informado en cada hito. Si algo cambia en la ruta, lo sabes primero por nosotros."
         ],
         "faq": [
           {
             "q": "¿Qué tipos de unidad manejan para carga pesada?",
-            "a": "Camas bajas, camas cuna, plataformas, furgones y bombonas, según el peso, las dimensiones y la ruta de tu carga."
+            "a": "Camas bajas, camas cuna, plataformas y furgones, según el peso, las dimensiones y la ruta de tu carga."
           },
           {
             "q": "¿Cubren rutas de mina o zonas de difícil acceso?",
             "a": "Sí. Evaluamos la ruta en el planeamiento y asignamos unidades y conductores con experiencia en altura y caminos afirmados."
-          }
-        ]
-      },
-      {
-        "slug": "carga-sobredimensionada",
-        "enSlug": "oversized-cargo",
-        "name": "Carga sobredimensionada",
-        "card": "Piezas que exceden las medidas estándar, con estudio de ruta, permisos y escolta.",
-        "image": "svc-sobredimensionada",
-        "imageAlt": "Carga sobredimensionada asegurada sobre un trailer modular de varios ejes",
-        "meta": {
-          "title": "Transporte de Carga Sobredimensionada | Tránsito Nacional",
-          "description": "Transporte de carga sobredimensionada en Perú y la Comunidad Andina: estudio de ruta, permisos, escolta y seguro incluido. Cotiza tu proyecto especial."
-        },
-        "h1": "Carga sobredimensionada",
-        "lead": "Piezas que no entran en un contenedor: tanques, tolvas, estructuras, transformadores y componentes de planta que exigen ingeniería de transporte.",
-        "includesTitle": "Qué incluye",
-        "includes": [
-          "Estudio de ruta: puentes, curvas, pendientes y cableado aéreo",
-          "Gestión de permisos especiales ante las autoridades",
-          "Vehículos escolta y señalización cuando corresponde",
-          "Plan de izaje y amarre certificado",
-          "Seguro de carga acorde al valor declarado",
-          "Coordinación con origen y destino para ventanas de entrega"
-        ],
-        "body": [
-          "Lo sobredimensionado no admite improvisación: un permiso que llega tarde o un puente mal medido detienen el proyecto completo. Nuestro planeamiento resuelve el papeleo y la ruta antes de que la pieza salga de planta.",
-          "Te entregamos un cronograma claro con hitos verificables, y lo cumplimos."
-        ],
-        "faq": [
-          {
-            "q": "¿Qué se considera carga sobredimensionada?",
-            "a": "Toda carga que excede las medidas o pesos máximos permitidos para circular sin permiso especial: generalmente más de 2.6 m de ancho, 4.3 m de alto o 48 toneladas según la normativa peruana."
-          },
-          {
-            "q": "¿Cuánto tiempo toma conseguir los permisos?",
-            "a": "Depende de la ruta y las regiones que cruza. En el planeamiento te damos un plazo realista antes de comprometer fechas."
           }
         ]
       },
@@ -156,7 +131,7 @@
           "description": "Transporte refrigerado en Perú, Ecuador y Colombia con temperatura controlada y registrada para alimentos, agroindustria y farmacéutica. Cotiza hoy."
         },
         "h1": "Carga refrigerada",
-        "lead": "Alimentos frescos y congelados, agroexportación y productos farmacéuticos con temperatura controlada de punta a punta.",
+        "lead": "Productos marinos a bajas temperaturas, alimentos frescos y congelados, agroexportación y productos farmacéuticos con temperatura controlada de punta a punta.",
         "includesTitle": "Qué incluye",
         "includes": [
           "Unidades refrigeradas con rangos de temperatura configurables",
@@ -167,8 +142,8 @@
           "Prioridad de paso en frontera para productos perecibles"
         ],
         "body": [
-          "En cadena de frío el enemigo es el tiempo fuera de rango. Configuramos la unidad según tu producto, registramos la temperatura durante todo el viaje y te entregamos el historial junto con la carga.",
-          "Trabajamos con agroexportadores y distribuidores que no pueden permitirse un rechazo en destino: por eso cada viaje refrigerado se planifica con margen y con plan B."
+          "En cadena de frío el enemigo es el tiempo fuera de rango. Configuramos la unidad según tu producto y registramos la temperatura durante todo el viaje.",
+          "Trabajamos con exportadores de productos marinos, agroexportadores y distribuidores que no pueden permitirse un rechazo en destino: por eso cada viaje refrigerado se planifica con margen."
         ],
         "faq": [
           {
@@ -177,7 +152,7 @@
           },
           {
             "q": "¿Puedo ver la temperatura durante el viaje?",
-            "a": "Sí. Te compartimos los registros durante el trayecto y el historial completo a la entrega."
+            "a": "Sí. Te compartimos los registros de temperatura durante el trayecto."
           }
         ]
       },
@@ -198,7 +173,7 @@
         "includes": [
           "Planeamiento del servicio a la medida de tu operación",
           "Transporte nacional e internacional por carretera",
-          "Almacenaje y cross-docking según tu flujo",
+          "Almacenaje según tu flujo de operación",
           "Seguro de carga de punta a punta",
           "Gestión aduanera en fronteras de la CAN",
           "Un solo punto de contacto y una sola factura"
@@ -227,7 +202,7 @@
         "imageAlt": "Interior de un almacén logístico con racks cargados y un montacargas en movimiento",
         "meta": {
           "title": "Almacenaje y Consolidación de Carga | Tránsito Nacional",
-          "description": "Almacenaje seguro en puntos estratégicos: consolidación, cross-docking y distribución integrados con tu transporte. Cotiza espacio para tu mercadería."
+          "description": "Almacenaje seguro en puntos estratégicos: consolidación y distribución integradas con tu transporte. Cotiza espacio para tu mercadería."
         },
         "h1": "Almacenaje",
         "lead": "Consolida, almacena y distribuye desde puntos estratégicos, con el transporte ya integrado.",
@@ -236,7 +211,6 @@
           "Recepción con control de bultos y estado de la mercadería",
           "Almacenaje techado y vigilado",
           "Consolidación y desconsolidación de carga",
-          "Cross-docking para flujos de distribución",
           "Inventario reportado y trazable",
           "Despacho coordinado con nuestra red de transporte"
         ],
@@ -259,36 +233,36 @@
         "slug": "seguro-de-carga",
         "enSlug": "cargo-insurance",
         "name": "Seguro de carga",
-        "card": "Tu mercadería cubierta desde que se carga hasta que se descarga en destino.",
+        "card": "Gestionamos la póliza que cubre tu mercadería. La prima se cotiza aparte del flete.",
         "image": "svc-verificacion",
         "imageAlt": "Inspector con casco verificando el amarre de una carga sobre plataforma",
         "meta": {
           "title": "Seguro de Carga Puerta a Puerta | Tránsito Nacional",
-          "description": "Seguro de carga desde el punto de carga hasta la descarga en destino, nacional e internacional. Viaja tranquilo: tu mercadería está cubierta."
+          "description": "Seguro de carga de punta a punta para transporte nacional e internacional. Gestionamos la póliza; la prima se cotiza aparte y corre por cuenta del cliente."
         },
         "h1": "Seguro de carga",
-        "lead": "Cada envío viaja con póliza vigente desde que la carga sube a la unidad hasta que se descarga en destino.",
+        "lead": "Gestionamos la póliza que cubre tu mercadería desde que se carga hasta que se descarga en destino. La prima se cotiza aparte del flete y corre por cuenta del cliente.",
         "includesTitle": "Qué incluye",
         "includes": [
           "Cobertura de punta a punta: carga, trayecto y descarga",
-          "Pólizas acordes al valor declarado de la mercadería",
+          "Póliza acorde al valor declarado de tu mercadería",
+          "Prima cotizada por separado del flete, a cargo del cliente",
           "Cobertura nacional e internacional en la CAN",
           "Asesoría para declarar correctamente el valor",
-          "Gestión del siniestro de principio a fin, si ocurriera",
-          "Constancia de cobertura antes de iniciar el viaje"
+          "Gestión del siniestro de principio a fin, si ocurriera"
         ],
         "body": [
-          "Un flete barato sin cobertura es caro el día del problema. Por eso el seguro no es un extra en nuestra propuesta: es parte del servicio.",
-          "Antes de cada viaje recibes la constancia de cobertura con tu mercadería correctamente declarada. Si algo pasara, gestionamos el siniestro nosotros."
+          "Un flete barato sin cobertura es caro el día del problema. Por eso gestionamos la póliza junto con tu servicio y te entregamos la constancia antes de que la unidad salga.",
+          "La prima del seguro no está incluida en el flete: se cotiza aparte según el valor declarado y el tipo de mercadería, y la asume el cliente. Así sabes exactamente qué pagas por transporte y qué por cobertura."
         ],
         "faq": [
           {
-            "q": "¿El seguro está incluido en la tarifa?",
-            "a": "La propuesta siempre incluye la cobertura de la carga. El costo depende del valor declarado y del tipo de mercadería."
+            "q": "¿El seguro está incluido en la tarifa del flete?",
+            "a": "No. La póliza se cotiza aparte y es un costo del cliente. La prima depende del valor declarado y del tipo de mercadería, y te la detallamos junto con la propuesta de transporte."
           },
           {
             "q": "¿Qué pasa si ocurre un siniestro?",
-            "a": "Nosotros gestionamos el proceso completo con la aseguradora y te mantenemos informado hasta el cierre del caso."
+            "a": "Gestionamos el proceso completo con la aseguradora y te mantenemos informado hasta el cierre del caso."
           }
         ]
       },
@@ -333,12 +307,12 @@
         "slug": "monitoreo-de-carga",
         "enSlug": "cargo-monitoring",
         "name": "Monitoreo de carga",
-        "card": "Tu carga ubicada y reportada durante todo el trayecto, sin que tengas que preguntar.",
+        "card": "Tu carga ubicada y reportada en cada hito del trayecto.",
         "image": "svc-monitoreo",
         "imageAlt": "Vista aérea de una carretera de montaña recorrida por camiones de carga al atardecer",
         "meta": {
           "title": "Monitoreo de Carga en Ruta 24/7 | Tránsito Nacional",
-          "description": "Monitoreo permanente de tu carga por GPS con reportes proactivos durante todo el trayecto, desde el origen hasta la descarga en destino."
+          "description": "Monitoreo permanente de tu carga por GPS con reportes en cada hito del trayecto, desde el origen hasta la descarga en destino."
         },
         "h1": "Monitoreo de carga",
         "lead": "Desde que la unidad sale del origen hasta que descarga en destino, sabes dónde está tu carga y en qué estado.",
@@ -348,11 +322,10 @@
           "Reportes proactivos en los hitos de la ruta",
           "Alertas tempranas ante desvíos o demoras",
           "Contacto directo con el equipo de operaciones",
-          "Confirmación de entrega con evidencia",
-          "Historial del viaje disponible tras la entrega"
+          "Confirmación de entrega con evidencia"
         ],
         "body": [
-          "El silencio es lo que más cuesta en logística: no saber dónde está la carga obliga a perseguir al proveedor. Nosotros invertimos la ecuación: te reportamos antes de que preguntes.",
+          "El silencio es lo que más cuesta en logística: no saber dónde está la carga obliga a perseguir al proveedor. Nosotros invertimos la ecuación y te reportamos en cada hito.",
           "Cada viaje tiene hitos definidos y tú recibes la confirmación de cada uno, hasta la evidencia final de entrega."
         ],
         "faq": [
@@ -395,7 +368,7 @@
       {
         "n": "5",
         "title": "Entrega en destino",
-        "text": "Coordinamos la descarga, confirmamos la entrega con evidencia y cerramos el viaje con el historial completo a tu disposición."
+        "text": "Coordinamos la descarga y confirmamos la entrega con evidencia en el punto de destino."
       }
     ]
   },
@@ -412,23 +385,63 @@
     "text": "Operamos en todo el Perú y conectamos los principales corredores de Ecuador y Colombia como transportista autorizado por la Comunidad Andina, bajo el marco de la Decisión 399.",
     "legendNational": "Cobertura nacional",
     "legendInternational": "Corredores internacionales",
-    "cities": ["LIMA", "AREQUIPA", "TRUJILLO", "PIURA", "CUSCO", "TUMBES", "QUITO", "GUAYAQUIL", "CUENCA", "BOGOTÁ", "MEDELLÍN", "CALI"],
+    "cities": [
+      "LIMA",
+      "AREQUIPA",
+      "TRUJILLO",
+      "PIURA",
+      "CUSCO",
+      "TUMBES",
+      "QUITO",
+      "GUAYAQUIL",
+      "CUENCA",
+      "BOGOTÁ",
+      "MEDELLÍN",
+      "CALI"
+    ],
     "routes": [
-      { "code": "PE-01", "route": "Lima → Arequipa → Cusco" },
-      { "code": "PE-EC", "route": "Lima → Tumbes → Guayaquil → Quito" },
-      { "code": "PE-CO", "route": "Lima → Quito → Cali → Bogotá" }
+      {
+        "code": "PE-01",
+        "route": "Lima → Arequipa → Cusco"
+      },
+      {
+        "code": "PE-EC",
+        "route": "Lima → Tumbes → Guayaquil → Quito"
+      },
+      {
+        "code": "PE-CO",
+        "route": "Lima → Quito → Cali → Bogotá"
+      }
     ],
     "mapLabel": "Mapa de Perú, Ecuador y Colombia con las rutas de Tránsito Nacional"
   },
   "industries": {
     "title": "Sectores que ya mueven con nosotros",
     "items": [
-      { "name": "Minería", "text": "Maquinaria, repuestos y suministros hasta la operación, en altura y caminos exigentes." },
-      { "name": "Construcción", "text": "Estructuras, equipos y materiales en obra, con ventanas de entrega coordinadas." },
-      { "name": "Agroindustria", "text": "Carga seca y refrigerada desde el campo hasta plantas, puertos y fronteras." },
-      { "name": "Retail y consumo", "text": "Distribución y reposición entre almacenes y puntos de venta, a tiempo." },
-      { "name": "Farmacéutica", "text": "Cadena de frío validada y trazable para productos sensibles." },
-      { "name": "Energía", "text": "Componentes sobredimensionados y equipos críticos para proyectos e instalaciones." }
+      {
+        "name": "Minería",
+        "text": "Maquinaria, repuestos y suministros hasta la operación, en altura y caminos exigentes."
+      },
+      {
+        "name": "Construcción",
+        "text": "Estructuras, equipos y materiales en obra, con ventanas de entrega coordinadas."
+      },
+      {
+        "name": "Agroindustria",
+        "text": "Carga seca y refrigerada desde el campo hasta plantas, puertos y fronteras."
+      },
+      {
+        "name": "Retail y consumo",
+        "text": "Distribución y reposición entre almacenes y puntos de venta, a tiempo."
+      },
+      {
+        "name": "Farmacéutica",
+        "text": "Cadena de frío validada y trazable para productos sensibles."
+      },
+      {
+        "name": "Energía",
+        "text": "Equipos críticos y componentes de planta para proyectos e instalaciones."
+      }
     ]
   },
   "faq": {
@@ -444,7 +457,7 @@
       },
       {
         "q": "¿La carga viaja asegurada?",
-        "a": "Sí. Toda carga viaja con póliza vigente desde que se carga en origen hasta que se descarga en el punto de destino, y recibes la constancia de cobertura antes de iniciar el viaje."
+        "a": "Sí. Toda carga viaja con póliza vigente desde que se carga en origen hasta que se descarga en el punto de destino. La prima del seguro se cotiza aparte del flete y es un costo del cliente."
       },
       {
         "q": "¿Pueden recoger la carga en mi planta o almacén?",
@@ -476,9 +489,18 @@
     ],
     "valuesTitle": "Cómo trabajamos",
     "values": [
-      { "title": "Responsabilidad total", "text": "Un solo responsable de punta a punta. Si algo pasa en el viaje, respondemos nosotros, no un tercero." },
-      { "title": "Verificar antes que prometer", "text": "Vamos al origen antes de enviar la unidad. Los problemas se detectan en el patio, no en la carretera." },
-      { "title": "Información sin perseguir", "text": "Reportamos avances antes de que preguntes. El silencio no es una opción cuando tu carga está en ruta." }
+      {
+        "title": "Responsabilidad total",
+        "text": "Un solo responsable de punta a punta. Si algo pasa en el viaje, respondemos nosotros, no un tercero."
+      },
+      {
+        "title": "Verificar antes que prometer",
+        "text": "Vamos al origen antes de enviar la unidad. Los problemas se detectan en el patio, no en la carretera."
+      },
+      {
+        "title": "Información en cada hito",
+        "text": "Reportamos los avances del viaje en cada hito de la ruta. El silencio no es una opción cuando tu carga está en camino."
+      }
     ],
     "ctaTitle": "Conversemos sobre tu operación",
     "ctaText": "Si mueves carga con frecuencia, armemos un programa a tu medida."
