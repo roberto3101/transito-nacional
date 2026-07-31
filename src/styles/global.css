@@ -438,22 +438,19 @@ html.lenis body {
   position: relative;
 }
 
-/* La cumbre no es blanca: recibe la luz naranja del atardecer y se funde
-   con el fondo de la sección, para que el corte sea armónico y no un tajo. */
-.peaks-top::before {
+/* La cordillera no es una franja crema recortada: nace en la penumbra del
+   atardecer (igual que las montañas del video), desciende por los naranjas
+   quemados y recién abajo se funde con el fondo de la sección. Así el corte
+   es un paisaje continuo y no un tajo. */
+.peaks-top::before,
+.peaks-top::after {
   content: '';
   position: absolute;
   top: 1px;
   left: 0;
   right: 0;
-  height: clamp(46px, 8vw, 120px);
+  height: clamp(58px, 9vw, 140px);
   transform: translateY(-100%);
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--bg) 78%, var(--brand) 22%) 0%,
-    color-mix(in srgb, var(--bg) 93%, var(--brand) 7%) 55%,
-    var(--bg) 100%
-  );
   clip-path: polygon(
     0% 100%, 8% 42%, 16% 78%, 24% 18%, 33% 62%, 41% 8%, 50% 55%,
     58% 20%, 67% 72%, 75% 30%, 84% 64%, 92% 12%, 100% 48%, 100% 100%
@@ -462,23 +459,27 @@ html.lenis body {
   z-index: 2;
 }
 
-/* Cresta iluminada: un hilo de luz sobre la silueta */
-.peaks-top::after {
-  content: '';
-  position: absolute;
-  top: 1px;
-  left: 0;
-  right: 0;
-  height: clamp(46px, 8vw, 120px);
-  transform: translateY(-100%);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--brand) 55%, transparent) 0%, transparent 26%);
-  clip-path: polygon(
-    0% 100%, 8% 42%, 16% 78%, 24% 18%, 33% 62%, 41% 8%, 50% 55%,
-    58% 20%, 67% 72%, 75% 30%, 84% 64%, 92% 12%, 100% 48%, 100% 100%
+.peaks-top::before {
+  background: linear-gradient(
+    180deg,
+    var(--peak-tip, #2b190c) 0%,
+    color-mix(in srgb, #6d3410 82%, var(--bg)) 17%,
+    color-mix(in srgb, var(--brand-deep) 74%, var(--bg)) 34%,
+    color-mix(in srgb, var(--brand) 46%, var(--bg)) 54%,
+    color-mix(in srgb, var(--brand) 16%, var(--bg)) 74%,
+    var(--bg) 100%
   );
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0.55;
+}
+
+/* Cresta: el último sol raspando la silueta */
+.peaks-top::after {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, #ffb673 70%, transparent) 0%,
+    color-mix(in srgb, var(--brand) 30%, transparent) 9%,
+    transparent 22%
+  );
+  opacity: 0.9;
 }
 
 /* ---------- Faro que sigue al cursor (solo en el acto nocturno) ---------- */
