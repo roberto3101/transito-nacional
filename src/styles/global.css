@@ -495,11 +495,21 @@ html.lenis body {
     pointer-events: none;
     background: radial-gradient(
       520px circle at var(--mx) var(--my),
+      rgba(214, 104, 12, 0.16),
+      transparent 46%
+    );
+    /* Sobre papel el faro tiñe; sobre la noche, ilumina */
+    mix-blend-mode: multiply;
+    z-index: 1;
+  }
+
+  :root[data-theme='dark'] .act-night::after {
+    background: radial-gradient(
+      520px circle at var(--mx) var(--my),
       rgba(238, 122, 24, 0.14),
       transparent 46%
     );
     mix-blend-mode: screen;
-    z-index: 1;
   }
 }
 
@@ -856,8 +866,23 @@ html {
   }
 }
 
-/* ---------- Acto nocturno: tokens locales (viaje de noche a mitad de página) ---------- */
+/* ---------- Acto atmosférico a mitad de página ----------
+   Es un capítulo aparte del viaje, pero nunca invierte el tema elegido:
+   en modo claro es la hora dorada; en modo oscuro, la noche en carretera. */
 .act-night {
+  --bg: #efe0c9;
+  --surface: #f7ecda;
+  --surface-2: #e6d5b9;
+  --text: #241a10;
+  --muted: #6a5943;
+  --line: #dbc7a7;
+  --line-strong: #c2ab86;
+  --brand-text: #97490a;
+  background: var(--bg);
+  color: var(--text);
+}
+
+:root[data-theme='dark'] .act-night {
   --bg: #0c0a08;
   --surface: #14110d;
   --surface-2: #1b1712;
@@ -866,8 +891,6 @@ html {
   --line: #292219;
   --line-strong: #3d342a;
   --brand-text: #ffa14f;
-  background: var(--bg);
-  color: var(--text);
 }
 
 @media (prefers-reduced-motion: reduce) {
